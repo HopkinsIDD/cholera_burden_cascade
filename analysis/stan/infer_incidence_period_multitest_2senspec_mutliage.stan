@@ -271,8 +271,8 @@ model {
       
       // Likelihood of RDT and PCR observations (missing culture)
       for (k in 1:2) {
-        p_rdt_pcr[k, 1] = multinomial_lpmf(fake_data_rdt[(k-1)*2+1, ]| p_vec) + log_priors_B[k, j];
-        p_rdt_pcr[k, 2] = multinomial_lpmf(fake_data_rdt[(k-1)*2+2, ]| p_vec) + log_priors_B[k+2, j];
+        p_rdt_pcr[k, 1] = multinomial_lpmf(fake_data_rdt[(k-1)*2+1, ]| p_vec) + log_priors_B[(k-1)*2+1, j];
+        p_rdt_pcr[k, 2] = multinomial_lpmf(fake_data_rdt[(k-1)*2+2, ]| p_vec) + log_priors_B[(k-1)*2+2, j];
         target += y_period_B[i, k, j] * log_sum_exp(p_rdt_pcr[k, ]);
       }
       

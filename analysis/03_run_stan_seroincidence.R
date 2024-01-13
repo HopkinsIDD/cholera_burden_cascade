@@ -34,22 +34,22 @@ stan_data <- readRDS(opt$stan_data)
 
 
 # Prior model -------------------------------------------------------------
-seroburden_prior_model <- cmdstan_model(str_replace(opt$stan_model, "\\.stan", "_prior.stan"))
-
-model_prior <- seroburden_prior_model$sample(
-  data =  stan_data,
-  init = .1,
-  seed = 1234,
-  chains = 4,
-  parallel_chains = 4,
-  iter_warmup = 250,
-  iter_sampling = 1000,
-  max_treedepth = 12L,
-  adapt_delta = .9,
-  save_warmup = T,
-  refresh = 10)
-
-model_prior$save_object(makeStanOutputName(opt = opt) %>% str_replace("\\.rds", "_prior.rds"))
+# seroburden_prior_model <- cmdstan_model(str_replace(opt$stan_model, "\\.stan", "_prior.stan"))
+# 
+# model_prior <- seroburden_prior_model$sample(
+#   data =  stan_data,
+#   init = .1,
+#   seed = 1234,
+#   chains = 4,
+#   parallel_chains = 4,
+#   iter_warmup = 250,
+#   iter_sampling = 1000,
+#   max_treedepth = 12L,
+#   adapt_delta = .9,
+#   save_warmup = T,
+#   refresh = 10)
+# 
+# model_prior$save_object(makeStanOutputName(opt = opt) %>% str_replace("\\.rds", "_prior.rds"))
 
 # Stan model --------------------------------------------------------------
 

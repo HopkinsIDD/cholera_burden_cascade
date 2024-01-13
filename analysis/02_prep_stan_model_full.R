@@ -83,93 +83,11 @@ beta <- subpars %>% pull(lambda) %>% exp()
 alpha <- log(2)/(subpars %>% pull(halflife))
 delta <- subpars %>% pull(logD) %>% exp()
 
-# Serochit data -----------------------------------------------------------
+# Load vibriocidal titer data and in wide data format to load to stan -----------------------------------------------------------
 
-# Enrollment dates 
-enroll_dates <- read_csv(here::here("serochit_data/serochit_enrol_dates.csv")) %>% 
-  janitor::clean_names()  %>% 
-  # Set round names to R0-R2 to match stan model names
-  mutate(round = str_remove_all(round,  "R") %>% 
-           as.numeric() %>% 
-           {. - 1} %>% 
-           str_c("R", .))
-
-# Age category data
-ind_baseline <- read_csv(here::here("serochit_data/baseline_individual_survey_careseek1a.csv")) %>%
-  dplyr::select(ID, hh_ID, n_age) %>%
-  dplyr::mutate(round="R1A") %>%
-  bind_rows(., read_csv(here::here("serochit_data/baseline_individual_survey_careseek1b.csv")) %>%
-              dplyr::select(ID, hh_ID, n_age) %>%
-              dplyr::mutate(round="R1B")) %>% 
-  mutate(age_grp =  get_age_group(n_age))
-
-enroll_dates <- enroll_dates %>% 
-  inner_join(ind_baseline %>% 
-               select(id = ID, age_grp))
-
-if (opt$age_grp != "all") {
-  enroll_dates <- filter(enroll_dates, age_grp == as.numeric(opt$age_grp))
-  
-  if (nrow(enroll_dates) == 0) {
-    stop("No data to process")
-  } 
-}
-
-cat("---- Running age grp", opt$age_grp, ", N =", distinct(enroll_dates, id) %>% nrow(),"\n")
-
-# Vibriocidal titers
-vc_titier_data <- read_csv("serochit_data/vibriocidal_titers.csv") %>% 
-  janitor::clean_names() %>% 
-  select(id, contains("ogawa_")) %>% 
-  na.omit() %>% 
-  pivot_longer(cols = contains("ogawa"),
-               names_to = "round",
-               values_to = "titer") %>% 
-  mutate(round = str_remove_all(round,  "ogawa_") %>% 
-           as.numeric() %>% 
-           {. - 1} %>% 
-           str_c("R", .)) %>% 
-  inner_join(enroll_dates) %>% 
-  rename(date = dt_interview) %>% 
-  mutate(titer = case_when(titer == 52 ~ 40,
-                           titer == 60 ~ 40,
-                           titer == 1600 ~ 1280,
-                           T ~ titer))
-
-
-if (do_plots) {
-  ggplot(vc_titier_data, aes(x = date, y = log2(titer))) +
-    geom_point(alpha = .3) +
-    geom_line(aes(group = id), alpha = .1) +
-    theme_bw()
-  
-  vc_titier_data %>% 
-    ggplot(aes(x = log2(titer), fill = round)) + 
-    geom_histogram(position = "dodge") +
-    theme_bw()
-  
-}
-
-
-# Data in wide format to pass to stan
-dates_wide <- vc_titier_data %>% 
-  select(id, round, date) %>% 
-  pivot_wider(names_from = "round",
-              values_from = "date") %>% 
-  { 
-    if(!is.na(n_subsample)) {
-      # !! subset to test model
-      sample_n(., size = n_subsample)
-    } else {
-      .
-    }
-  }
-
-titers_wide <- vc_titier_data %>% 
-  select(id, round, titer) %>% 
-  pivot_wider(names_from = "round",
-              values_from = "titer") %>% 
-  filter(id %in% dates_wide$id)
+vc_titier_data <- readRDS(str_glue("data/vc_ogawa_titers_full_agegrpall.rds"))
+dates_wide <- readRDS(str_glue("data/dates_full_wide_agegrpall.rds"))
+titers_wide <- readRDS(str_glue("data/titers_full_wide_agegrpall.rds"))
 
 # Dilutions levels
 dilutions <- vc_titier_data %>% 
@@ -197,10 +115,6 @@ dilutions <- dilutions %>%
 # Define numbers for stan
 N <- nrow(titers_wide)    # Number of participants
 
-# Save objects
-saveRDS(vc_titier_data, str_glue("generated_data/vc_ogawa_titers_full_agegrp{opt$age_grp}.rds"))
-saveRDS(dates_wide, str_glue("generated_data/dates_full_wide_agegrp{opt$age_grp}.rds"))
-saveRDS(titers_wide, str_glue("generated_data/titers_full_wide_agegrp{opt$age_grp}.rds"))
 
 # Define times ------------------------------------------------------------
 # Set times in model. Note that all times in the model are relative to the 
@@ -250,107 +164,105 @@ for (i in 1:N) {
 # interval. We assume that the probability of infection is proportional
 # to the number of reported cases.
 
+
 # --- A. compute smooth case date for probabilities ---
-# Surveillance data
-case_data <- read_csv("serochit_data/clinical_24jan2021_13feb2022_sitakunda.csv") %>% 
-  rename(date = start) %>% 
-  filter(sitakunda == "Yes") %>% 
-  group_by(date) %>% 
-  summarise(n_tot = n(),
-            n_pos = sum(rdt_result == "Positive")) %>% 
-  ungroup()
+## Surveillance data
+#case_data <- read_csv("data/clinical_sitakunda.csv") %>% 
+#  rename(date = start) %>% 
+#  filter(sitakunda == "Yes") %>% 
+#  group_by(date) %>% 
+#  summarise(n_tot = n(),
+#            n_pos = sum(rdt_result == "Positive")) %>% 
+#  ungroup()
 
-# Use incubation period + reporting delay to shift reported cases to infection
-inc_period <- 2   
-report_delay <- 2
+## Use incubation period + reporting delay to shift reported cases to infection
+#inc_period <- 2   
+#report_delay <- 2
 
-# Select surveillance data within the time bounds of foi
-case_data_subset <- case_data %>% 
-  complete(date = seq.Date(min(case_data$date), 
-                           max(case_data$date),
-                           by = "1 days")) %>% 
-  replace_na(list(n_tot = 0, n_pos = 0)) %>% 
-  filter(date >= t_min, date <= t_max) %>% 
-  arrange(date)
+## Select surveillance data within the time bounds of foi
+#case_data_subset <- case_data %>% 
+#  complete(date = seq.Date(min(case_data$date), 
+#                           max(case_data$date),
+#                           by = "1 days")) %>% 
+#  replace_na(list(n_tot = 0, n_pos = 0)) %>% 
+#  filter(date >= t_min, date <= t_max) %>% 
+#  arrange(date)
 
-# Full vector of dates for incidence inference
-full_dates <- makeFullDates()
+## Full vector of dates for incidence inference
+#full_dates <- makeFullDates()
 
-# Pad data for period prior to start of observations
-case_data_subset_full <- case_data_subset %>%  
-  complete(date = seq.Date(t_min, 
-                           max(case_data$date),
-                           by = "1 days")) %>% 
-  mutate(yday = lubridate::yday(date),
-         year = lubridate::year(date)) %>%
-  add_count(yday) %>%
-  {
-    x <- . 
-    x <- x %>% 
-      group_by(yday) %>% 
-      mutate(n_na = sum(is.na(n_tot)))
+## Pad data for period prior to start of observations
+#case_data_subset_full <- case_data_subset %>%  
+#  complete(date = seq.Date(t_min, 
+#                           max(case_data$date),
+#                           by = "1 days")) %>% 
+#  mutate(yday = lubridate::yday(date),
+#         year = lubridate::year(date)) %>%
+#  add_count(yday) %>%
+#  {
+#    x <- . 
+#    x <- x %>% 
+#      group_by(yday) %>% 
+#      mutate(n_na = sum(is.na(n_tot)))
     
-    bind_rows(
-      x %>% filter(n == 1 | n_na == 0, date >= min(case_data$date)),
-      x %>% filter(n > 1, n_na > 0) %>% 
-        mutate(n_tot = n_tot[!is.na(n_tot)],
-               n_pos = n_pos[!is.na(n_pos)])
-    )
-  } %>% 
-  ungroup() %>% 
-  complete(date = full_dates) %>% 
-  # Fill missing dates
-  replace_na(list(n_tot = 1, n_pos = 0)) %>% 
-  arrange(date) %>% 
-  filter(date >= t_min, date <= t_max)
+#    bind_rows(
+#      x %>% filter(n == 1 | n_na == 0, date >= min(case_data$date)),
+#      x %>% filter(n > 1, n_na > 0) %>% 
+#        mutate(n_tot = n_tot[!is.na(n_tot)],
+#               n_pos = n_pos[!is.na(n_pos)])
+#    )
+#  } %>% 
+#  ungroup() %>% 
+#  complete(date = full_dates) %>% 
+#  # Fill missing dates
+#  replace_na(list(n_tot = 1, n_pos = 0)) %>% 
+#  arrange(date) %>% 
+#  filter(date >= t_min, date <= t_max)
 
 
-# Smooth timeseries
-case_data_smooth <- case_data_subset_full %>%
-  # Compute weekly seropositivity
-  mutate(week = str_c(lubridate::year(date),
-                      lubridate::epiweek(date), sep = "-")) %>% 
-  group_by(week) %>% 
-  mutate(chol_pos = (sum(n_pos)+1)/sum(n_tot),
-         # Invert to true probability based on sens and spec
-         true_pos = pmax(.01, (chol_pos - 1 + .9)/(.9 - 1 + .9))) %>% 
-  ungroup() %>% 
-  mutate(n_chol_est = (n_tot * true_pos)) %>% 
-  mutate(cases_shifted = dplyr::lead(n_chol_est, inc_period + report_delay),
-         cases_smooth = forecast::ma(cases_shifted, 28)) %>% 
-  rowwise() %>% 
-  mutate(cases_shifted = case_when(is.na(cases_shifted) ~ n_chol_est,
-                                   T ~ cases_shifted),
-         cases_smooth = case_when(is.na(cases_smooth) ~ as.numeric(cases_shifted),
-                                  T ~ cases_smooth)) %>% 
-  ungroup()
+## Smooth timeseries
+#case_data_smooth <- case_data_subset_full %>%
+#  # Compute weekly seropositivity
+#  mutate(week = str_c(lubridate::year(date),
+#                      lubridate::epiweek(date), sep = "-")) %>% 
+#  group_by(week) %>% 
+#  mutate(chol_pos = (sum(n_pos)+1)/sum(n_tot),
+#         # Invert to true probability based on sens and spec
+#         true_pos = pmax(.01, (chol_pos - 1 + .9)/(.9 - 1 + .9))) %>% 
+#  ungroup() %>% 
+#  mutate(n_chol_est = (n_tot * true_pos)) %>% 
+#  mutate(cases_shifted = dplyr::lead(n_chol_est, inc_period + report_delay),
+#         cases_smooth = forecast::ma(cases_shifted, 28)) %>% 
+#  rowwise() %>% 
+#  mutate(cases_shifted = case_when(is.na(cases_shifted) ~ n_chol_est,
+#                                   T ~ cases_shifted),
+#         cases_smooth = case_when(is.na(cases_smooth) ~ as.numeric(cases_shifted),
+#                                  T ~ cases_smooth)) %>% 
+#  ungroup()
 
-if (do_plots) {
-  case_data_smooth %>% 
-    pivot_longer(cols = c("n_tot", "n_pos", "n_chol_est", "cases_shifted", "cases_smooth")) %>% 
-    bind_rows(vc_titier_data %>% 
-                select(date, name = round) %>% 
-                group_by(date, name) %>% 
-                summarise(value = n())) %>% 
-    ggplot(aes(x = date, y = value, fill = name)) + 
-    geom_bar(stat = "identity") +
-    facet_grid(name ~ ., scales = "free_y") +
-    theme_bw()
-  
-  case_data_smooth %>% 
-    mutate(year = lubridate::year(date) %>% factor(),
-           yday = lubridate::yday(date)) %>% 
-    ggplot(aes(x = yday, y = n_chol_est, color = year)) + 
-    geom_line() +
-    theme_bw()
-}
+#if (do_plots) {
+#  case_data_smooth %>% 
+#    pivot_longer(cols = c("n_tot", "n_pos", "n_chol_est", "cases_shifted", "cases_smooth")) %>% 
+#    bind_rows(vc_titier_data %>% 
+#                select(date, name = round) %>% 
+#                group_by(date, name) %>% 
+#                summarise(value = n())) %>% 
+#    ggplot(aes(x = date, y = value, fill = name)) + 
+#    geom_bar(stat = "identity") +
+#    facet_grid(name ~ ., scales = "free_y") +
+#    theme_bw()
+#  
+#  case_data_smooth %>% 
+#    mutate(year = lubridate::year(date) %>% factor(),
+#           yday = lubridate::yday(date)) %>% 
+#    ggplot(aes(x = yday, y = n_chol_est, color = year)) + 
+#    geom_line() +
+#    theme_bw()
+#}
 
-# Save objects
-saveRDS(case_data_smooth, "generated_data/surveillance_data_padded.rds")
-
-# # New attempt using prior estimates of incidence
-# incid_traj <- readRDS("generated_data/incid_prior_survonly_traj.rds") %>% 
-#   rename(cases_smooth = mean)
+# Read in case_data_smooth (smooth case date for probabilities) previously generated 
+case_data_smooth <- readRDS("data/surveillance_data_padded.rds")
+case_data_subset_full <- readRDS("data/case_data_subset_full.rds")
 
 # --- B. Compute probabilities  ---
 # Using furrr for parallel computations

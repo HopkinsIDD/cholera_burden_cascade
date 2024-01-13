@@ -15,24 +15,11 @@ future::plan("multisession", workers = 6)
 
 # Age cuts
 age_cuts <- c(0, 5, 65, Inf)
-do_plots <- F
+do_plots <- T
 
-# Prepare data ------------------------------------------------------------
+# Load and prepare data ------------------------------------------------------------
 
-lab_data <- read_csv("serochit_data/clinical_24jan2021_13feb2022_sitakunda.csv") %>% 
-  select(date = start, 
-         rdt_res = rdt_result, 
-         pcr_res = ind_pcr_result, 
-         cult_res = ind_cul_result, 
-         age_group, 
-         age = n_criteria_age,
-         sitakunda) %>% 
-  addEpiWeek() %>% 
-  mutate(age_cat = cut(age, age_cuts, right = F),
-         rdt_res = rdt_res == "Positive") %>% 
-  mutate(across(contains("res"), function(x) x == 1)) %>% 
-  # !! Remove patiente from other than Sitakunda
-  filter(sitakunda == "Yes")
+lab_data<-readRDS("data/lab_data.rds")
 
 tot_counts <- lab_data %>% 
   filter(date %in% makeFullDates()) %>% 
@@ -46,8 +33,6 @@ tot_counts <- lab_data %>%
   filter(date >= min(lab_data$date))
 
 surveillance_dates <- sort(unique(tot_counts$date))
-
-saveRDS(lab_data, file = "generated_data/lab_data.rds")
 
 # Pass weekly numbers for positivity
 period_data <- lab_data %>% 
@@ -206,47 +191,6 @@ spec_bounds <- tribble(
   mutate(across(c("mean", "lo", "hi"), ~ logit(. - 1e-6))) %>%
   mutate(sd = (mean - lo)/2)
 
-# No longer using these as they are a bit wonky
-# Use bounds from Kirsten's paper
-# Measure    Test      Mean        SD
-# mu_se[1] Sensitivity Culture 0.7764628 0.1664731
-# mu_se[2] Sensitivity     PCR 0.8213523 0.1271205
-# mu_se[3] Sensitivity     RDT 0.8635424 0.1225988
-# mu_sp[1] Specificity Culture 0.9297207 0.0524599
-# mu_sp[2] Specificity     PCR 0.9288227 0.0543626
-# mu_sp[3] Specificity     RDT 0.8495652 0.1252342
-# expit <- function(x) { 1/(1+exp(-x))}
-# sens_bounds <- tribble(
-#   ~test, ~raw_mean, ~raw_sd,
-#   "RDT", 0.8635424, 0.1225988,
-#   "PCR", 0.8213523, 0.1271205,
-#   "cul", 0.7764628, 0.1664731
-# ) %>%
-#   mutate(lo = raw_mean - 1.96 * raw_sd,
-#          hi = pmin(raw_mean + 1.96 * raw_sd, .99),
-#          mean = raw_mean) %>% 
-#   mutate(across(c("mean", "lo", "hi"), ~ logit(. - 1e-6))) %>% 
-#   mutate(sd = (mean - lo)/ 1.96 ) %>% 
-#   rowwise() %>% 
-#   mutate(new_mean = mean(expit(rnorm(1e4, mean, sd))),
-#          new_sd = sd(expit(rnorm(1e4, mean, sd)))) %>% 
-#   ungroup()
-# 
-# spec_bounds <- tribble(
-#   ~test, ~raw_mean, ~raw_sd,
-#   "RDT", 0.8495652, 0.1252342,
-#   "PCR", 0.9288227, 0.0543626,
-#   "cul", 0.9297207, 0.0524599
-# ) %>%
-#   mutate(lo = raw_mean - 1.96 * raw_sd,
-#          hi = pmin(raw_mean + 1.96 * raw_sd, .99),
-#          mean = raw_mean) %>% 
-#   mutate(across(c("mean", "lo", "hi"), ~ logit(. - 1e-6))) %>% 
-#   mutate(sd = (mean - lo)/ 1.96 ) %>% 
-#   rowwise() %>% 
-#   mutate(new_mean = mean(expit(rnorm(1e4, mean, sd))),
-#          new_sd = sd(expit(rnorm(1e4, mean, sd)))) %>% 
-#   ungroup()
 
 ind_vec <- c(1, 1, 2, 3)
 map_pos_period_sens <- map_dbl(period_data_dates$tl, ~ ifelse(. < "2021-06-29", 1, 2))
@@ -346,6 +290,9 @@ incid_genquant <- incid_model$generate_quantities(fitted_params = incid_samples,
 incid_genquant$save_object("generated_data/incid_prior_survonly_stan_output_updated_multiage_genquant.rds")
 
 # Check results -----------------------------------------------------------
+
+incid_samples <- readRDS("generated_data/incid_prior_survonly_stan_output_updated_multiage.rds")
+
 date_limits <- c("2021-01-01", "2022-04-01") %>% as.Date()
 incid_samples$summary(variables = c("sens_all", "spec_all"))
 
@@ -354,7 +301,7 @@ incid_samples$draws(variables = c("sens_all", "spec_all")) %>%
 
 age_categories <- lab_data$age_cat %>% levels()
 
-incid_traj <- incid_samples$summary(variables = c("I_chol", "I_nonchol"), .cores = 6) %>% 
+incid_traj <- incid_samples$summary(variables = c("I_chol", "I_nonchol"), .cores = 2) %>% 
   mutate(time = str_extract(variable, "[0-9]+(?=,)") %>% as.numeric(),
          date = full_dates[time],
          age_cat_num = str_extract(variable, "(?<=,)[0-9]+") %>% as.numeric(),
@@ -375,7 +322,7 @@ if (do_plots) {
          width = 10, height = 6)
 }
 
-probchol_traj <- incid_samples$summary(variables = c("gamma"), .cores = 4) %>% 
+probchol_traj <- incid_samples$summary(variables = c("gamma"), .cores = 2) %>% 
   mutate(time = str_extract(variable, "[0-9]+(?=,)") %>% as.numeric(),
          date = full_dates[time],
          age_cat_num = str_extract(variable, "(?<=,)[0-9]+") %>% as.numeric(),

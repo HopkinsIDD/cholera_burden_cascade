@@ -10,7 +10,8 @@ library(cmdstanr)
 source(here("analysis/utils.R"))
 
 
-files <- dir("generated_data/", pattern = "for_figure", full.name = T)
+files <- dir("generated_data/", pattern = "for_figures_diarrhea2", full.name = T)
+# files <- dir("generated_data/", pattern = "for_figure", full.name = T)
 for (f in files) {
   load(f)
 }
@@ -122,7 +123,25 @@ ggsave(p_figure2_noage,
        filename = "figures/figure2_noage.pdf", 
        width = 8, height = 7)
 
+# weekly infections and annualized incidence when no medically attended cholera cases occur
+epiweek_no_clinical_cases <- weekly_I_sum %>% 
+  filter(tmid >= min(lab_data$tmid)) %>% 
+  filter(mean<1) 
 
+epiweek_infections_no_clinical_cases <- tot_exposed %>% 
+  filter(tmid >= min(lab_data$tmid)) %>%
+  addEpiWeek(., date_col = "tmid") %>% 
+  filter(epiweek %in% epiweek_no_clinical_cases$epiweek)
+
+infections_no_clinical_cases <- range(epiweek_infections_no_clinical_cases$mean)
+
+poi_dt <- getOutputPeriodOverall() %>% # length of modeling period
+  unlist() %>% 
+  diff()
+
+pop_overall <- 450094.9
+
+incidence_annualized_no_clinical_cases <- (infections_no_clinical_cases/pop_overall)*(365.25/poi_dt)*1e3
 
 # Figure 2 - with agecats ------------------------------------------------
 
@@ -155,7 +174,6 @@ p_data_age <- lab_data %>%
         legend.box.background = element_rect(fill="white", size=0, color="white"),
         legend.box.margin = margin(1, 8, 1, 1))
 
-
 p_infer_sum_age <- weekly_I_sum_age_true %>% 
   mutate(set = "Overall community\nsymptomatic infections") %>% 
   bind_rows(weekly_I_sum_age %>% mutate(set = "Medically-attented\ncholera cases")) %>% 
@@ -181,7 +199,6 @@ p_infer_sum_age <- weekly_I_sum_age_true %>%
         legend.box.margin = margin(1, 15, 1, 1),
         legend.spacing.y = unit(.07, "in"))
 
-
 p_exp_sum_age <- tot_exposed_age %>%
   inner_join(pop_dat) %>% 
   mutate(across(c("mean", "q5", "q95"), .fns = ~ .x/pop*1000)) %>% 
@@ -198,7 +215,6 @@ p_exp_sum_age <- tot_exposed_age %>%
   theme_bw() +
   labs(y = "Weekly incidence rate\n per 1,000 person", x = "Date")#  +
   # coord_cartesian(xlim = datelim, ylim = c(0, 20000))
-
 
 p_figure2_age <- cowplot::plot_grid(
   p_data_age +
@@ -222,6 +238,47 @@ ggsave(p_figure2_age,
        width = 10, height = 8)
 
 
+# Figure 2 symptomatic infections free scale inset - with agecats ------------------------------------------------
+
+p_infer_sum_age_freescale <- weekly_I_sum_age_true %>% 
+  mutate(set = "Overall community\nsymptomatic infections") %>% 
+  bind_rows(weekly_I_sum_age %>% mutate(set = "Medically-attented\ncholera cases")) %>% 
+  filter(tmid >= min(lab_data$tmid)) %>% 
+  ggplot(aes(x = tmid, y  = mean, ymin = q5, ymax = q95,
+             group = set)) +
+  geom_rect(data = round_dates,
+            inherit.aes = F,
+            aes(xmin = tl, xmax = tr, group = round, ymin = -Inf, max = Inf),
+            fill = "gray", alpha = .3) +
+  geom_errorbar(size = .35, width = 0, color = "black", alpha = .5) +
+  geom_point(aes(pch = set), fill = "gray", stroke = .35) +
+  coord_cartesian(xlim = datelim) +
+  facet_grid(age_cat~., scales = "free", labeller = labeller(age_cat = age_cat_dict)) +
+  scale_shape_manual(values = c(21, 24)) +
+  guides(shape = guide_legend("Cholera cases", byrow = TRUE)) +
+  theme_bw() +
+  labs(y = "Weekly incidence", x = "Date") +
+  theme(legend.position = c(.85, .54),
+        legend.key.size = unit(.15, "in"),
+        legend.title = element_text(size = 10),
+        legend.box.background = element_rect(fill="white", size=0, color="white"),
+        legend.box.margin = margin(1, 15, 1, 1),
+        legend.spacing.y = unit(.07, "in"))
+
+
+p_figure2_age_freescale <- cowplot::plot_grid(
+  p_infer_sum_age_freescale +
+    scale_dates_axis +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1, vjust = 1)),
+  ncol = 1, align = "v", axis = "lr")
+
+ggsave(p_figure2_age_freescale, 
+       filename = "figures/figure2_age_symptomatic_freescale.png", 
+       width = 8, height = 6)
+
+ggsave(p_figure2_age_freescale, 
+       filename = "figures/figure2_age_symptomatic_freescale.pdf", 
+       width = 8, height = 6)
 
 # Figure 3 - conversion factors -------------------------------------------
 
@@ -261,7 +318,7 @@ p_state <- num_stats %>%
                 key_glyph = NULL) +
   theme_bw() +
   labs(x = NULL, y = NULL) +
-  ggthemes::scale_color_few("Dark")
+  ggthemes::scale_color_few("Dark") + scale_y_continuous(breaks = c(1,1000,2000,3000,4000))
 
 for (i in 1:length(unique(num_stats$var))) {
   # https://stackoverflow.com/questions/61505768/use-position-dodge-for-arrowheads-but-nudge-x-for-label-boxes-in-ggreppelgeom

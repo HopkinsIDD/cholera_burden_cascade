@@ -1,0 +1,446 @@
+---
+title: "Supplementary Tables"
+header-includes:
+    \renewcommand{\thetable}{Supplementary \arabic{table}}
+    \fontsize{10}{20}\selectfont
+output:
+    bookdown::pdf_document2:
+        fig_caption: yes
+        citation_package: biblatex
+        extra_dependencies: ["float"]
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, 
+                      warning = FALSE, 
+                      message = FALSE,
+                      fig.pos = 'h!',
+                      fig.align = "center", 
+                      cache.lazy = TRUE)
+knitr::opts_chunk$set(fig.pos = "H", out.extra = "")
+# Set locale
+Sys.setlocale("LC_ALL", "C")
+```
+
+```{r preamble}
+library(tidyverse)
+library(magrittr)
+library(cowplot)
+library(kableExtra)
+library(here)
+library(knitr)
+library(posterior)
+library(bayesplot)
+library(cmdstanr)
+source(here("analysis/utils.R"))
+```
+
+\newpage
+
+```{r suspectedcase}
+
+age_cat_dict <- getAgeCatDictFigures() 
+
+load(here("generated_data/table_data_bundle_for_figures_diarrhea2.rdata"))
+
+medcase_data <- bind_rows(
+  surv_data %>% dplyr::mutate(value = formatC(value, format = "f", digits = 1),age_cat=recode(age_cat, "< 5"="1-4","overall"="Overall")),
+  est_data %>% dplyr::mutate(age_cat=recode(age_cat, "< 5"="1-4","overall"="Overall"))
+) %>% 
+  filter(where=="Clinics only") %>%
+  dplyr::mutate(value_ll = as.numeric(substr(value, 6, 8)),
+                value_ul = as.numeric(substr(value, 10, 12)),
+                value = as.numeric(substr(value, 1, 4))) %>%
+  dplyr::select(-where) %>% arrange(what, age_cat)
+
+medcase_data_calc <- medcase_data %>% filter(what=="tot_cases") %>% rename(value_sC=value) %>% 
+  dplyr::select(-what,-value_ll,-value_ul) %>%
+  bind_cols(., medcase_data %>% filter(what=="tot_clin_est") %>% rename(value_cC=value,
+                                                                        value_cC_ll=value_ll,
+                                                                        value_cC_ul=value_ul) %>%
+              dplyr::select(-age_cat,-what)
+  ) %>%
+  dplyr::mutate(value=value_sC/value_cC,
+                value_ll=value_sC/value_cC_ul,
+                value_ul=value_sC/value_cC_ll)
+
+medcase_data_calc %>% 
+  mutate(
+    value_cC = str_c(
+      formatC(value_cC, format = "f", digits = 1),
+      " (",
+      formatC(value_cC_ll, format = "f", digits = 1),
+      "-", 
+      formatC(value_cC_ul, format = "f", digits = 1),
+      ")"
+    ),
+    value = str_c(
+      formatC(value, format = "f", digits = 1),
+      " (",
+      formatC(value_ll, format = "f", digits = 1),
+      "-", 
+      formatC(value_ul, format = "f", digits = 1),
+      ")"
+    )) %>% 
+  select(-value_cC_ll,-value_cC_ul,-value_ll,-value_ul) %>% 
+  kableExtra::kbl(format = "latex",
+                  booktabs = T,
+                  escape = F,
+                  caption = "Medically-attended suspected case to true cholera case ratio. The ratio of suspected cases to the estimated true cholera incidence at health facilities decreases with age and is 10.5 (7.0-10.5) overall; for every 10.5 suspected cases that visit a health facility, 1 will be a true cholera case.",
+                  col.names = c("Age group", "Suspected case incidence\nper 1,000", "True cholera incidence\nper 1,000", "Ratio"),
+                  position = "h", 
+                  align = "c") %>% 
+  kableExtra::kable_styling(full_width = F)
+```
+
+\newpage
+
+```{r health-seeking}
+
+
+severity_dict <- c(
+  "diarrhea1" = "Mild diarrhea",
+  "diarrhea2" = "Moderate diarrhea",
+  "diarrhea3" = "Severe diarrhea"
+)
+
+healthprob_stats <- map_df(
+  str_c("diarrhea", 1:3), 
+  function(x) {
+    load(here(str_glue("generated_data/healthprob_bundle_for_figures_{x}.rdata")))
+    healthprob_stats %>% 
+      mutate(severity = severity_dict[x])
+  }) %>% 
+  mutate(severity = factor(severity, levels = severity_dict),
+         age_cat = factor(age_cat, levels = c("< 5", "5-64", "65+"))) %>% 
+  arrange(severity, age_cat)
+
+
+healthprob_stats %>% 
+  mutate(text = str_c(
+    formatC(mean, format = "f", digits = 2),
+    " (",
+    formatC(q025, format = "f", digits = 2),
+    "-", 
+    formatC(q975, format = "f", digits = 2),
+    ")"
+  ), 
+  age_cat = str_c("$", age_cat, "$")) %>% 
+  select(age_cat, n_sample, seek_health, text) %>% 
+  kableExtra::kbl(format = "latex",
+                  booktabs = T,
+                  escape = F,
+                  caption = "Proportion of survey participants reporting that they would seek care for different diarrhea severities at one of the two official diarrhea treatment centres in the catchment area (Sitakunda Upazila Health Complex or BITID). There were no significant differences in healthcare seeking for moderate diarrhea across age groups.",
+                  col.names = c("Age group", "N", "Seek health='yes'", "Proportion [mean (95\\% CrI)]"),
+                  position = "h", 
+                  align = "c") %>% 
+  kableExtra::kable_styling(full_width = F) %>% 
+  kableExtra::pack_rows(index = table(healthprob_stats$severity))
+```
+
+\newpage
+
+```{r health-seeking-2}
+
+age_cuts <- c(0, 5, 65, Inf)
+age_cat_dict <- getAgeCatDictFigures() 
+
+# load healthcare seeking behavior data
+healthcare_seek <-
+  bind_rows(read_csv(here::here("serochit_data/baseline_individual_survey_careseek1a.csv")) %>% 
+              dplyr::select(round, ID, hh_ID, n_age_years, cat_diarrhea1_site, ind_diarrhea1_care, cat_diarrhea2_site, ind_diarrhea2_care, cat_diarrhea3_site, ind_diarrhea3_care),
+            read_csv(here::here("serochit_data/baseline_individual_survey_careseek1b.csv")) %>% 
+              dplyr::select(round, ID, hh_ID, n_age_years, cat_diarrhea1_site, ind_diarrhea1_care, cat_diarrhea2_site, ind_diarrhea2_care, cat_diarrhea3_site, ind_diarrhea3_care),
+            read_csv(here::here("serochit_data/baseline_individual_survey_careseek2.csv")) %>% 
+              dplyr::select(round, ID, hh_ID, n_age_years, cat_diarrhea1_site, ind_diarrhea1_care, cat_diarrhea2_site, ind_diarrhea2_care, cat_diarrhea3_site, ind_diarrhea3_care) %>% dplyr::mutate(round=as.character(round)),
+            read_csv(here::here("serochit_data/baseline_individual_survey_careseek3.csv")) %>% 
+              dplyr::select(round, ID, hh_ID, n_age_years, cat_diarrhea1_site, ind_diarrhea1_care, cat_diarrhea2_site, ind_diarrhea2_care, cat_diarrhea3_site, ind_diarrhea3_care) %>% dplyr::mutate(round=as.character(round))) %>%
+  mutate(age_cat = cut(n_age_years, age_cuts, right = F),
+                     age_cat = age_cat_dict[age_cat],
+                     age_cat = factor(age_cat, levels = age_cat_dict))
+
+# add variables for where would seek care and filter missing data
+healthcare_seek1 <- healthcare_seek %>%
+  dplyr::filter(!is.na(ind_diarrhea1_care)) %>%
+  dplyr::mutate(seek_clinic_care = ifelse(ind_diarrhea1_care == 'yes' &
+                                            (cat_diarrhea1_site=='bitid_hosp'|cat_diarrhea1_site=='sitakunda_uhc'), 1, 0),
+                seek_pharmacy = ifelse(ind_diarrhea1_care == 'yes' &
+                                         (cat_diarrhea1_site=='pharmacy'), 1, 0),
+                seek_other = ifelse(ind_diarrhea1_care == 'yes' &                               (cat_diarrhea1_site!='bitid_hosp'&cat_diarrhea1_site!='sitakunda_uhc'&cat_diarrhea1_site!='pharmacy'), 1, 0),
+                diarrhea_type="Mild diarrhea", ind_care=ind_diarrhea1_care) %>%
+  select(ID,age_cat,ind_care,seek_clinic_care,seek_pharmacy,seek_other,diarrhea_type)
+
+healthcare_seek2 <- healthcare_seek %>%
+  dplyr::filter(!is.na(ind_diarrhea2_care)) %>%
+  dplyr::mutate(seek_clinic_care = ifelse(ind_diarrhea2_care == 'yes' &
+                                            (cat_diarrhea2_site=='bitid_hosp'|cat_diarrhea2_site=='sitakunda_uhc'), 1, 0),
+                seek_pharmacy = ifelse(ind_diarrhea2_care == 'yes' &
+                                         (cat_diarrhea2_site=='pharmacy'), 1, 0),
+                seek_other = ifelse(ind_diarrhea2_care == 'yes' &                               (cat_diarrhea2_site!='bitid_hosp'&cat_diarrhea2_site!='sitakunda_uhc'&cat_diarrhea2_site!='pharmacy'), 1, 0),
+                diarrhea_type="Moderate diarrhea", ind_care=ind_diarrhea2_care) %>%
+  select(ID,age_cat,ind_care,seek_clinic_care,seek_pharmacy,seek_other,diarrhea_type)
+
+healthcare_seek3 <- healthcare_seek %>%
+  dplyr::filter(!is.na(ind_diarrhea3_care)) %>%
+  dplyr::mutate(seek_clinic_care = ifelse(ind_diarrhea3_care == 'yes' &
+                                            (cat_diarrhea3_site=='bitid_hosp'|cat_diarrhea3_site=='sitakunda_uhc'), 1, 0),
+                seek_pharmacy = ifelse(ind_diarrhea3_care == 'yes' &
+                                         (cat_diarrhea3_site=='pharmacy'), 1, 0),
+                seek_other = ifelse(ind_diarrhea3_care == 'yes' &                               (cat_diarrhea3_site!='bitid_hosp'&cat_diarrhea3_site!='sitakunda_uhc'&cat_diarrhea3_site!='pharmacy'), 1, 0),
+                diarrhea_type="Severe diarrhea", ind_care=ind_diarrhea3_care) %>%
+  select(ID,age_cat,ind_care,seek_clinic_care,seek_pharmacy,seek_other,diarrhea_type)
+
+healthcare_seek <- bind_rows(healthcare_seek1, healthcare_seek2, healthcare_seek3)
+
+# number that seek care by age group
+df_cs <- healthcare_seek %>%
+  filter(!is.na(seek_clinic_care)) %>%
+  dplyr::group_by(age_cat,diarrhea_type) %>%
+  dplyr::summarize(total = length(!is.na(ind_care)),
+                   n_anycare = sum(ind_care == "yes"),
+                   n_clinic = sum(seek_clinic_care == 1),
+                   n_other = sum(seek_other == 1),
+                   n_pharm = sum(seek_pharmacy == 1)
+                   ) %>%
+  dplyr::mutate(p_anycare = n_anycare/total,
+                p_clinic = n_clinic/total,
+                p_other = n_other/total,
+                p_pharm = n_pharm/total
+                ) %>% 
+  bind_rows(., healthcare_seek %>% 
+              filter(!is.na(seek_clinic_care)) %>%
+              dplyr::group_by(diarrhea_type) %>%
+              dplyr::summarize(total = length(!is.na(ind_care)),
+                   n_anycare = sum(ind_care == "yes"),
+                   n_clinic = sum(seek_clinic_care == 1),
+                   n_other = sum(seek_other == 1),
+                   n_pharm = sum(seek_pharmacy == 1)
+                   ) %>%
+              dplyr::mutate(p_anycare = n_anycare/total,
+                p_clinic = n_clinic/total,
+                p_other = n_other/total,
+                p_pharm = n_pharm/total
+                ) %>% mutate(age_cat = "Overall")) %>% arrange(diarrhea_type, age_cat)
+  
+df_cs %>% 
+  mutate(anycare = str_c(
+    formatC(p_anycare, format = "f", digits = 2),
+    " (",
+    formatC(n_anycare, format = "f", digits = 0),
+    "/", 
+    formatC(total, format = "f", digits = 0),
+    ")"
+  ), 
+  clinic = str_c(
+    formatC(p_clinic, format = "f", digits = 2),
+    " (",
+    formatC(n_clinic, format = "f", digits = 0),
+    "/", 
+    formatC(total, format = "f", digits = 0),
+    ")"
+  ),
+  pharm = str_c(
+    formatC(p_pharm, format = "f", digits = 2),
+    " (",
+    formatC(n_pharm, format = "f", digits = 0),
+    "/", 
+    formatC(total, format = "f", digits = 0),
+    ")"
+  ),
+  other = str_c(
+    formatC(p_other, format = "f", digits = 2),
+    " (",
+    formatC(n_other, format = "f", digits = 0),
+    "/", 
+    formatC(total, format = "f", digits = 0),
+    ")"
+  )) %>% 
+  select(age_cat, anycare, clinic, pharm, other) %>% 
+  kableExtra::kbl(format = "latex",
+                  booktabs = T,
+                  #escape = F,
+                  caption = "Proportion of survey participants reporting that they would seek care for different diarrhea severities by age group and healthcare facility type in the catchment area. Sitakunda facilities refers to those individuals that would seek care at either the Sitakunda Upazila Health Complex or BITID, and other facilities refers to those individuals that would seek care at one of six other types of healthcare facilities in the study region: private hospitals, Chittagong General Hospital, CMCH college, Hathazari Upazila Health Complex, traditional healer, Union health office. Participants were less likely to seek care at a pharmacy with increased disease severity.",
+                  col.names = c("Age group", "Prop. seeking any care (n/N)", "Prop. visiting Sitakunda facilities (n/N)", "Prop. visiting pharmacies (n/N)", "Prop. visiting other facilities (n/N)"),
+                  position = "h", 
+                  align = "l") %>% 
+  kableExtra::kable_styling(full_width = F) %>% 
+  kableExtra::pack_rows(index = table(df_cs$diarrhea_type)) %>%
+  column_spec(c(2,3,4,5), width = "10em")
+```
+
+\newpage
+
+```{r casenumbers}
+
+load(here("generated_data/table_data_bundle_for_figures_diarrhea2.rdata"))
+
+var_dict <- c(
+    tot_cases = "Suspected cholera cases",
+    tot_rtd_pos = "RDT positive suspected cases",
+    tot_clin_est = "True cholera cases (clinics)",
+    tot_comm_est = "True cholera cases (community + clinics)",
+    infections = "Infections"
+)
+
+table_data <- incidence_data %>% 
+  select(-c(value,annual_fraction)) %>%
+  dplyr::mutate(age_cat=recode(age_cat, "< 5"="1-4","overall"="Overall"),
+                age_cat = factor(age_cat, levels = c("1-4","5-64","65+","Overall"))) %>% 
+  arrange(age_cat) %>% 
+  dplyr::mutate(what = factor(what, levels=c("tot_cases",
+                                             "tot_rtd_pos",
+                                             "tot_clin_est",
+                                             "tot_comm_est",
+                                             "infections")),
+                what = var_dict[what]) %>% 
+  pivot_wider(names_from = "age_cat",
+              values_from = c("value_annual","pop")) %>%
+  dplyr::mutate(where=recode(where, "Clinics only"="Healthcare facility","Full community"="Community"))
+
+# extracting population estimates for each age group and overall
+pop_1_4 <- table_data$`pop_1-4`[1]
+pop_5_64 <- table_data$`pop_5-64`[1]
+pop_65 <- table_data$`pop_65+`[1]
+pop_overall <- table_data$pop_Overall[1]
+
+# formatting rounding of table estimates
+table_data <- table_data[1:2,1:6] %>%
+  dplyr::mutate(`value_annual_1-4` = format(round(as.numeric(`value_annual_1-4`),2)),
+                `value_annual_5-64` = format(round(as.numeric(`value_annual_5-64`),2)),
+                `value_annual_65+` = format(round(as.numeric(`value_annual_65+`),2)),
+                value_annual_Overall = format(round(as.numeric(value_annual_Overall),2))) %>%
+  bind_rows(.,table_data[3:5,1:6]) %>%
+  add_row(what="Total population", where=" ", `value_annual_1-4` = format(round(pop_1_4,2)),
+                `value_annual_5-64` = format(round(pop_5_64,2)),
+                `value_annual_65+` = format(round(pop_65,2)),
+                value_annual_Overall = format(round(pop_overall,2)), .before = 1) %>%
+  dplyr::mutate(where = factor(where, levels = c(" ", "Healthcare facility","Community")))
+  
+table_data %>% 
+  select(-where) %>%
+  kableExtra::kbl(format = "latex",
+                  booktabs = T,
+                  caption = "Estimates of annualized suspected, true cases, and infections by age group visiting healthcare facilities and in the community. The total population for each age group and overall is shown in the first row.",
+                  col.names = c("Estimate", 
+                                "1-4 years (N)", 
+                                "5-64 years (N)", 
+                                "65+ years (N)",
+                                "Overall   (N)"),
+                  position = "h", 
+                  align = "l") %>% 
+  kableExtra::kable_styling(full_width = F) %>% 
+  kableExtra::pack_rows(index = table(table_data$where)) %>%
+  column_spec(c(2,3,4,5), width = "5em")
+
+
+```
+
+\pagebreak
+
+```{r water}
+
+drinkwater <- read_csv(here("serochit_data", "drinking_water_source.csv"))
+
+drinkwater %>% 
+  kbl(caption = "Number of individuals using different drinking water sources in the one week prior to the survey among the serological cohort (N=1,785; multiple sources allowed per individual). Notably, the use of piped and tap water as the primary water source in the week prior to the survey markedly reduced across seasons, from spring to winter, within the course of one year. Despite multiple water sources being permitted to be selected per individual, there was more piped and tap water in use during the high transmission season, which could be indicative of a lack of consistent water service and/or contamination.") %>% 
+  kableExtra::kable_styling(full_width = F)
+
+```
+
+\pagebreak
+
+```{r healthseekingdiarrhea}
+
+age_cat_dict <- getAgeCatDictFigures() 
+
+# Dict
+var_dict <- c(
+  tot_comm_est = "True cholera incidence (community + clinics)"
+)
+
+## for mild diarrhea
+load(here(str_glue("generated_data/table_data_bundle_for_figures_diarrhea1.rdata"))) 
+
+mild_table_data <- est_data %>% 
+  dplyr::filter(what=="tot_comm_est") %>%
+  mutate(age_cat = recode(age_cat, "< 5"="1-4", "overall"="Overall"),
+         what = var_dict[what],
+         age_cat = factor(age_cat, levels = age_cat_dict),
+         'Diarrhea type' = "Mild") %>% 
+  pivot_wider(names_from = "age_cat",
+              values_from = "value")
+
+## for moderate diarrhea
+load(here(str_glue("generated_data/table_data_bundle_for_figures_diarrhea2.rdata"))) 
+
+moderate_table_data <- est_data %>% 
+  dplyr::filter(what=="tot_comm_est") %>%
+  mutate(age_cat = recode(age_cat, "< 5"="1-4", "overall"="Overall"),
+         what = var_dict[what],
+         age_cat = factor(age_cat, levels = age_cat_dict),
+         'Diarrhea type' = "Moderate") %>% 
+  pivot_wider(names_from = "age_cat",
+              values_from = "value")
+
+## for severe diarrhea
+load(here(str_glue("generated_data/table_data_bundle_for_figures_diarrhea3.rdata"))) 
+
+severe_table_data <- est_data %>% 
+  dplyr::filter(what=="tot_comm_est") %>%
+  mutate(age_cat = recode(age_cat, "< 5"="1-4", "overall"="Overall"),
+         what = var_dict[what],
+         age_cat = factor(age_cat, levels = age_cat_dict),
+         'Diarrhea type' = "Severe") %>% 
+  pivot_wider(names_from = "age_cat",
+              values_from = "value")
+
+table_data <- bind_rows(mild_table_data, moderate_table_data, severe_table_data) %>%
+  dplyr::select(-c(where,what))
+
+table_data %>% 
+  kbl(caption = "Estimates of true annualized symptomatic incidence rates of V. cholerae per 1,000 population by diarrhea severity. These data show that the true symptomatic incidence rate (using data from the community and clinics) vary only slightly across the different definitions of diarrhea (mild, moderate, severe), which determine the probability of healthcare seeking. As the severity of diarrhea increases, our estimates of the true incidence of symptomatic cholera decreases.") %>% 
+  kableExtra::kable_styling(full_width = F)
+
+```
+
+\pagebreak
+
+```{r marginal-effect-ratio}
+
+# Load postprocessed data
+load(here("generated_data/prob_output_bundle_for_figures.rdata"))  
+
+# Compute mean of ratio of weekly marginal effects.
+marginal_ratio_average <- marginal_ratio_draws %>% 
+  filter(tl > "2021-03-30", tr < "2022-02-12") %>% 
+  group_by(age_cat) %>% 
+  summarise(mean = mean(draw), 
+            q05 = quantile(draw, .05),
+            q975 = quantile(draw, .975)) %>% 
+  mutate(text = str_c(
+    formatC(mean, digits = 2, format = "f"),
+    " (",
+    formatC(q05, digits = 2, format = "f"),
+    "-",
+    formatC(q975, digits = 2, format = "f"),
+    ")"
+  )) %>%
+  select(age_cat,text) %>% 
+  mutate(age_cat = recode(age_cat, "[0,5)"="1-4",
+                          "[5,65)"="5-64",
+                          "[65,Inf)"="65+"))
+
+marginal_ratio_average %>% 
+  kableExtra::kbl(format = "latex",
+                  booktabs = T,
+                  caption = "Ratio of the marginal effects to quantify the relative importance of the time-vraying versus constance force of infection seroincidence models.",
+                  col.names = c("Age categories", 
+                                "Marginal effect (CI)"),
+                  position = "h", 
+                  align = "l") %>% 
+  kableExtra::kable_styling(full_width = F) 
+
+```

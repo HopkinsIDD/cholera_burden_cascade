@@ -11,7 +11,7 @@ library(here)
 source("analysis/utils.R")
 
 # Lazy parameters
-n_cores <- 4    # number of cores for processing
+n_cores <- 2    # number of cores for processing
 chain_subset <- NULL      # chains to subset for computations, NULL for all
 draw_subset <- NULL    # subset of draws, NULL for all
 do_plots <- F    # make intermediate plots
@@ -19,7 +19,7 @@ t_min_plot <- as.Date("2021-01-24") # tmin for plotting
 t_max_plot <- getTmax()   # tmin for plotting
 datelim <- c(t_min_plot, t_max_plot)
 date_subset <- seq.Date(t_min_plot, t_max_plot, by = "1 days")
-diarrhea_severity <- "diarrhea1"
+diarrhea_severity <- "diarrhea2"
 
 save(
   list = c("chain_subset", "draw_subset"),
@@ -29,18 +29,18 @@ save(
 # Load data ---------------------------------------------------------------
 
 # Serosurvey round dates
-dates_wide <- readRDS(here("generated_data/dates_full_wide.rds"))
+dates_wide <- readRDS(here("data/dates_full_wide_agegrpall.rds"))
 study_period_dates <- seq.Date(min(dates_wide$R0), max(dates_wide$R2), by = "1 days")
 
 # Full clinical data
-case_data_subset_full <- readRDS(here("generated_data/case_data_padded.rds"))
+case_data_subset_full <- readRDS(here("generated_data/case_data_subset_full.rds"))
 case_data_subset_filtered <- readRDS(here("generated_data/case_data_subset_filtered.rds"))
 
 # Clinical data
-lab_data <- readRDS(here("generated_data/lab_data.rds"))
+lab_data <- readRDS(here("data/lab_data.rds"))
 
 # Aggregated weeklyclinical data
-period_data <- readRDS(here("generated_data/period_data.rds"))
+period_data <- readRDS(here("data/period_data.rds"))
 
 # Age categories in rest of computations
 age_categories <- c(unique(period_data$age_cat), "overall")
@@ -85,7 +85,7 @@ pop_dat <- getSitakundatData(age_categories = age_categories) %>%
 
 
 # Titer data
-vc_titer_data <- readRDS(here("generated_data/vc_ogawa_titers_full_agegrpall.rds"))
+vc_titer_data <- readRDS(here("data/vc_ogawa_titers_full_agegrpall.rds"))
 
 # Dictionnary for age categories
 age_cat_dict <- getAgeCatDict()
@@ -121,16 +121,16 @@ res_incid <- readRDS(here("generated_data/incid_prior_survonly_stan_output_updat
 # prior_incid <- readRDS(here("generated_data/incid_prior_survonly_stan_output_updated_multiage_prior.rds"))
 
 # Seroincidence model estimates
-res_sero <- readRDS(here("generated_data/stan_output_20230510_sitakunda_joint_fullpooling_agegrpall_J100_ogawa.rds"))
+res_sero <- readRDS(here("generated_data/stan_output_final_envlambda_agegrpall_J100_ogawa.rds"))
 # prior_sero <- readRDS(here("generated_data/stan_output_jointfullpol_sitakunda_agegrpall_J100_ogawa_prior.rds"))
 
 # Exposure classes based on serology
-prob_case <-  readRDS(here("generated_data/stan_output_stats_20230510_sitakunda_joint_fullpooling_agegrpall_J100_ogawa.rds"))$prob_case
+prob_case <-  readRDS(here("generated_data/stan_output_stats_final_envlambda_agegrpall_J100_ogawa.rds"))$prob_case
 
 # Estimates of exposure using serology
-genquant <- readRDS("generated_data/genquant_output_20230510_sitakunda_joint_fullpooling_agegrpall_J100.rds")
-genquant_cumulative <- readRDS("generated_data/genquant_output_20230510_sitakunda_joint_fullpooling_agegrpall_J100_cumulative.rds")
-genquant_overall <- readRDS("generated_data/genquant_output_20230510_sitakunda_joint_fullpooling_agegrpall_J100_overall.rds")
+genquant <- readRDS("generated_data/genquant_output_final_envlambda_agegrpall_J100.rds")
+genquant_cumulative <- readRDS("generated_data/genquant_output_final_envlambda_agegrpall_J100_cumulative.rds")
+genquant_overall <- readRDS("generated_data/genquant_output_final_envlambda_agegrpall_J100_overall.rds")
 
 
 # A. Clinical incidence aggregates -------------------------------------------
@@ -554,12 +554,12 @@ clinical_dt <- diff(range(date_subset)) %>% as.numeric()
 # Surveillance data
 surv_data <- lab_data %>% 
   # filter(date %in% study_period_dates) %>%
-  mutate(age_cat = age_cat_dict[age_cat]) %>% 
   {
     x <- .
     bind_rows(x, 
               x %>% mutate(age_cat = "overall"))
   } %>% 
+  mutate(age_cat = age_cat_dict[age_cat]) %>% 
   group_by(age_cat) %>% 
   summarise(tot_cases = n(),
             tot_rtd_pos = sum(rdt_res)) %>% 
@@ -608,10 +608,74 @@ est_data <-
     age_cat = factor(age_cat, levels = age_cat_dict)) %>% 
   select(age_cat, where, what, value)
 
+# Incidence calculation data
+incidence_data <- lab_data %>% 
+  {
+    x <- .
+    bind_rows(x, 
+              x %>% mutate(age_cat = "overall"))
+  } %>% 
+  mutate(age_cat = age_cat_dict[age_cat]) %>% 
+  group_by(age_cat) %>% 
+  summarise(tot_cases = n(),
+            tot_rtd_pos = sum(rdt_res)) %>% 
+  pivot_longer(cols = contains("tot"),
+               names_to = "what") %>% 
+  inner_join(pop_dat %>% mutate(age_cat = age_cat_dict[age_cat])) %>% 
+  mutate(value_annual = 365.25*value/clinical_dt) %>% 
+  mutate(where = "Clinics only",
+         annual_fraction = 365.25/clinical_dt,
+         value = as.character(value),
+         value_annual = as.character(value_annual)) %>%
+  bind_rows(., bind_rows(
+    # Incidence data
+    bind_rows(tot_I_sum_age,
+              tot_I_sum) %>% 
+      mutate(what = "tot_clin_est",
+             age_cat = age_cat_dict,
+             where = "Clinics only") %>% 
+      bind_rows(
+        bind_rows(tot_I_sum_age_true,
+                  tot_I_sum_true) %>% 
+          mutate(what = "tot_comm_est",
+                 age_cat = age_cat_dict,
+                 where = "Full community")
+      ),
+    # Seroinfections data
+    num_exposed_overall_stats %>% 
+      mutate(age_cat = age_cat_dict[age_cat],
+             what = "infections",
+             where = "Full community")
+  ) %>% 
+    inner_join(pop_dat %>% mutate(age_cat = age_cat_dict[age_cat])) %>% 
+    mutate(dt = ifelse(str_detect(what, "_est"), clinical_dt, poi_dt),
+           value = str_c(
+             formatC(mean, format = "f", digits = 1),
+             " (",
+             formatC(q5, format = "f", digits = 1),
+             "-",
+             formatC(q95, format = "f", digits = 1),
+             ")"
+           )) %>% 
+    # Annualize
+    mutate(across(c("mean", "q5", "q95"), ~ .x *365.25/dt)) %>% 
+    mutate(
+      value_annual = str_c(
+        formatC(mean, format = "f", digits = 1),
+        " (",
+        formatC(q5, format = "f", digits = 1),
+        "-",
+        formatC(q95, format = "f", digits = 1),
+        ")"
+      ),
+      age_cat = factor(age_cat, levels = age_cat_dict),
+      annual_fraction = 365.25/dt) %>%
+    select(age_cat, what, value, pop, value_annual, where, annual_fraction)
+            )
 
 # Save for figures
 save(
-  list = c("surv_data", "est_data"),
+  list = c("surv_data", "est_data", "incidence_data"),
   file = here(str_glue("generated_data/table_data_bundle_for_figures_{diarrhea_severity}.rdata")) 
 )
 

@@ -19,7 +19,7 @@ this_red <- "#BD3E5C"
 # Sketch of modeling framework --------------------------------------------
 
 # Clinical data
-lab_data <- readRDS(here("generated_data/lab_data.rds"))
+lab_data <- readRDS(here("data/lab_data.rds"))
 case_data_subset_filtered <- readRDS(here("generated_data/case_data_subset_filtered.rds"))
 
 theme_sketch <- theme_classic() +
@@ -64,7 +64,7 @@ ggsave(p_overview_surv, filename = "figures/overview_sketch_surv.pdf", width = 4
 
 
 # Titer data
-vc_titier_data <- readRDS(here("generated_data/vc_ogawa_titers_full_agegrpall.rds"))
+vc_titier_data <- readRDS(here("data/vc_ogawa_titers_full_agegrpall.rds"))
 
 # a. Titer trajectories for a few participants
 set.seed(1123)
@@ -354,9 +354,9 @@ ggsave(p_params_incid, filename = "figures/SF_params_incid.png",
 
 # PP checks serology ------------------------------------------------------
 # Titer data
-vc_titier_data <- readRDS(here("generated_data/vc_ogawa_titers_full_agegrpall.rds"))
+vc_titier_data <- readRDS(here("data/vc_ogawa_titers_full_agegrpall.rds"))
 # Exposure classes based on serology
-prob_case <-  readRDS(here("generated_data/stan_output_stats_20230510_sitakunda_joint_fullpooling_agegrpall_J100_ogawa.rds"))$prob_case
+prob_case <-  readRDS(here("generated_data/stan_output_stats_final_envlambda_agegrpall_J100_ogawa.rds"))$prob_case
 
 # From the rethinking package
 log_sum_exp <- function(x) {
@@ -374,8 +374,8 @@ p_traj <- prob_case %>%
   ungroup() %>% 
   mutate(id = unique(vc_titier_data$id)[id]) %>% 
   inner_join(vc_titier_data) %>% 
-  mutate(age_cat = age_cat_dict[age_grp],
-         age_cat = factor(age_cat, levels = age_cat_dict)) %>% 
+  mutate(age_cat = getAgeCatDict()[age_grp],
+         age_cat = factor(age_cat, levels = getAgeCatDict())) %>% 
   ggplot(aes(x = date, y = log2(titer/5), group = id, color = max_prob)) +
   geom_point(alpha = .5, size = .6) +
   geom_line(alpha = .2, linewidth = .5) +
@@ -429,166 +429,12 @@ ggsave(p_sero_draws, filename = "figures/SF_params_sero.png",
        width = 8, height = 5, dpi = 300)
 
 
-# Map of clinical suspected and confirmed cases ---------------------------------------------------------
+# Demographic pyramids ---------------------------------------------------------
 
-path_to_serochit <- here::here("../SeroChit/")
-# load hh data and coords using R1 household coordinates (which are most similar to the sampling frame coords)
-hh_baseline <- dplyr::bind_rows(read_csv(paste0(path_to_serochit,"data/serosurvey/tidy_data/round_1a/baseline_household_survey.csv")),
-                                read_csv(paste0(path_to_serochit,"data/serosurvey/tidy_data/round_1b/baseline_household_survey.csv"))) %>%
-  dplyr::select(hh_ID,Latitude_r1,Longitude_r1,round) %>% dplyr::distinct()
+survey <- read_csv("data/demographic_pyramid_survey_data.csv")
+clinical <- read_csv("data/demographic_pyramid_clinical_data.csv")
 
-# enrolled household locations (need to replace NA lat/long for H612510)
-sample = dplyr::bind_rows(
-  readRDS(paste0(path_to_serochit,"data/sample/1_March2021/two_stage_24March2021.rds")) %>% dplyr::mutate(draw="1"),
-  readRDS(paste0(path_to_serochit,"data/sample/2_May2021/two_stage_17May2021.rds")) %>% dplyr::mutate(draw="2"), 
-  readRDS(paste0(path_to_serochit,"data/sample/3_June2021/two_stage_02June2021_SUBSET_492.rds")) %>% dplyr::mutate(draw="3"))
-
-H612510 <- sample %>% dplyr::filter(id_structure=="H612510") ## to replace NA lat/lon coordinates
-
-enrolled_hhs <- hh_baseline %>% 
-  dplyr::mutate(Latitude_r1=ifelse(is.na(Latitude_r1),H612510$lon,Latitude_r1),
-                Longitude_r1=ifelse(is.na(Longitude_r1),H612510$lat,Longitude_r1)) %>%
-  #dplyr::filter(!is.na(Latitude_r1)) %>% # remove 1 household w missing lat/long coordinates
-  st_as_sf(.,coords = c("Longitude_r1","Latitude_r1"),crs="+proj=longlat +datum=WGS84 +no_defs") %>%
-  dplyr::mutate(lockdown=ifelse(round=="1a","Pre-lockdown","Post-lockdown")) 
-
-# load shapefiles
-bang.map = readRDS(paste0(path_to_serochit,"data/shp_files/BGD_adm2.rds")) %>% st_as_sf() 
-bang.map.3 = readRDS(paste0(path_to_serochit,"data/shp_files/BGD_adm3.rds")) %>% st_as_sf() 
-bang.map.4 <- read_sf(paste0(path_to_serochit,"data/shp_files/bgd_admbnda_adm4_bbs_20180410/bgd_admbnda_adm4_bbs_20180410.shp")) %>% 
-  st_as_sf() %>%
-  dplyr::filter(ADM2_EN=="Chittagong")
-
-chitt_city <- data.frame(22.3090995, 91.8017675) %>% as_tibble() %>% 
-  dplyr::rename(lat=X22.3090995, long=X91.8017675) %>% st_as_sf(.,coords = c("long","lat"),crs="+proj=longlat +datum=WGS84 +no_defs")
-sitakunda<-bang.map.3 %>%
-  dplyr::filter(ADM3_EN=="Sitakunda") %>%
-  st_transform(., crs = "+proj=longlat +datum=WGS84 +no_defs") 
-chattogram<-bang.map %>%
-  dplyr::filter(NAME_2=="Chittagong") %>%
-  st_transform(., crs = "+proj=longlat +datum=WGS84 +no_defs") 
-hosp_loc <- read_csv(paste0(path_to_serochit,"data/UHC_sites_sitakunda.csv")) %>% 
-  dplyr::filter(Type=="Upazila HC"|Type=="BITID") %>%
-  sf::st_as_sf(.,coords = c("Lon","Lat"),crs="+proj=longlat +datum=WGS84 +no_defs") %>% 
-  dplyr::mutate(Type=dplyr::recode(Type, 'Upazila HC'='Sitakunda UHC '))
-
-clinical_address <- read_csv(paste0(path_to_serochit,"data/clinical/raw_data/serochit_clinical_address_data.csv")) 
-clinical <- read_csv(paste0(path_to_serochit,"data/clinical/raw_data/serochit_cs_10282022.csv")) %>% 
-  dplyr::mutate(start=as.Date(dt_interview)) %>% 
-  dplyr::select(record_id, start, rdt_result, cat_sex, n_criteria_age) %>%
-  dplyr::left_join(.,clinical_address, by=c("record_id")) %>%
-  dplyr::filter(start<="2022-02-13") %>%
-  dplyr::mutate(chittagong=ifelse(cat_time_district=="Chittagong" | cat_home_district=="Chittagong" ,"Yes","No"),
-                sitakunda=ifelse(cat_time_subdistrict=="Sitakunda" | cat_home_subdistrict=="Sitakunda","Yes", "No")) %>% 
-  dplyr::mutate(n_criteria_age = as.numeric(n_criteria_age),
-                age_group = dplyr::case_when(n_criteria_age<5 ~ "<5", 
-                                             n_criteria_age>=5 & n_criteria_age < 65 ~ "5-64", 
-                                             n_criteria_age>=65 ~ "65+") %>% factor(levels = c("<5", "5-64", "65+")))
-
-# maps
-panel_0 <- ggplot() +
-  geom_sf(data=bang.map,color="grey",lwd=0) +
-  geom_sf(data=sitakunda,fill="#6f7296",lwd=0, alpha=0.7) +
-  coord_sf(datum=NA) + 
-  labs(x="") + labs(y="") + theme_void() +
-  geom_sf(data=chattogram,color="black",lwd=0.07, alpha=0) 
-
-panel_a <- ggplot() +
-  #geom_sf(data=bang.map.4,fill="#966f8c",lwd=0, alpha=0.4) +
-  geom_sf(data=bang.map.4 %>% dplyr::filter(ADM3_EN=="Sitakunda"),fill="#6f7296",lwd=0.02, alpha=0.8,color="white") +
-  #geom_sf(data=enrolled_hhs, size=0.2, aes(color="#551da3")) +
-  geom_sf(data=enrolled_hhs, alpha=0.5, size=0.8,color="#551da3") +
-  coord_sf(datum=NA) + 
-  labs(x="") + labs(y="") + theme_void() + 
-  scale_color_manual(name='',
-                     values=c('Enrolled\nhouseholds'="#551da3")) +
-  theme(legend.text=element_text(size=10),
-        legend.position = c(0.9, 0)) +
-  guides(colour = guide_legend(override.aes = list(size=3))) +
-  geom_sf(data=hosp_loc,size=10,lty="solid",shape="+",lwd=3,color="black",alpha=0.6) +
-  scalebar(bang.map.4 %>% dplyr::filter(ADM3_EN=="Sitakunda"), dist = 5, dist_unit = "km",transform = TRUE, model = "WGS84", st.size = 3,location = "topleft") +
-  geom_text_repel(data = hosp_loc,aes(label=Type, geometry=geometry),stat="sf_coordinates",alpha=1,
-                  min.segment.length = 0,segment.size=1,size=3,fontface = 'bold', color = 'black',
-                  box.padding = unit(0.35, "lines"),point.padding = unit(0.5, "lines"),segment.color = 'black') 
-
-# show % suspected cases from each union
-panel_b_data <- clinical %>%
-  dplyr::filter(chittagong=="Yes") %>% dplyr::filter(!is.na(cat_home_district)) %>%
-  dplyr::mutate(count=1) %>%
-  dplyr::group_by(cat_home_union) %>% dplyr::summarise(count=sum(count, na.rm=T)) %>%
-  dplyr::mutate(perc=(count/(sum(.$count)))*100) %>%
-  dplyr::left_join(bang.map.4,.,by=c("ADM4_EN"="cat_home_union")) %>%
-  dplyr::filter(!is.na(count))
-
-panel_b <- ggplot() +
-  geom_sf(data=bang.map.4,fill="grey",lwd=0, alpha=0.4) +
-  geom_sf(data=panel_b_data, aes(fill = perc), lwd=0) +
-  scale_fill_viridis(option = "C",trans = "log", breaks=c(0,.0625,0.125,0.25,0.5,1,2,4,8,12), name="Percent of\nsuspected\ncases (%)", 
-                     guide = guide_legend( keyheight = unit(3, units = "mm"), keywidth=unit(12, units = "mm"), label.position = "right", title.position = 'top', nrow=8, location="top")) +
-  geom_sf(data=bang.map.3 %>% dplyr::filter(ADM3_EN=="Sitakunda"),color="black",lwd=0.4, alpha=0) +
-  coord_sf(datum=NA) + 
-  labs(x="") + labs(y="") + theme_void() + 
-  geom_sf(data=hosp_loc,size=10,lty="solid",shape="+",lwd=3,color="black",alpha=0.6) +
-  #scalebar(chattogram, dist = 10, dist_unit = "km",transform = TRUE, model = "WGS84", st.size = 3) +
-  geom_text_repel(data = hosp_loc,aes(label=Type, geometry=geometry),stat="sf_coordinates",alpha=1,
-                  min.segment.length = 0,segment.size=1,size=3,fontface = 'bold', color = 'black',
-                  box.padding = unit(0.35, "lines"),point.padding = unit(0.5, "lines"),segment.color = 'black') 
-
-# show % of rdt+ from each union 
-panel_c_data <- clinical %>%
-  dplyr::filter(chittagong=="Yes") %>% dplyr::filter(!is.na(cat_home_district)) %>%
-  dplyr::filter(rdt_result=="Positive") %>%
-  dplyr::mutate(count=1) %>%
-  dplyr::group_by(cat_home_union) %>% dplyr::summarise(count=sum(count, na.rm=T)) %>%
-  dplyr::mutate(perc=(count/(sum(.$count)))*100) %>%
-  dplyr::left_join(bang.map.4,.,by=c("ADM4_EN"="cat_home_union")) %>%
-  dplyr::filter(!is.na(count))
-
-panel_c <- ggplot() +
-  geom_sf(data=bang.map.4,fill="grey",lwd=0, alpha=0.4) +
-  geom_sf(data=panel_c_data, aes(fill = perc), lwd=0) +
-  scale_fill_viridis(option = "C",trans = "log", breaks=c(0,0.5,1,2,3,4,5,6,7,8), name="Percent of\nconfirmed\ncases (%)", 
-                     guide = guide_legend( keyheight = unit(3, units = "mm"), keywidth=unit(12, units = "mm"), label.position = "right", title.position = 'top', nrow=9) ) +
-  geom_sf(data=bang.map.3 %>% dplyr::filter(ADM3_EN=="Sitakunda"),color="black",lwd=0.4, alpha=0) +
-  coord_sf(datum=NA) + 
-  labs(x="") + labs(y="") + theme_void() + 
-  geom_sf(data=hosp_loc,size=10,lty="solid",shape="+",lwd=3,color="black",alpha=0.6) +
-  #scalebar(chattogram, dist = 10, dist_unit = "km",transform = TRUE, model = "WGS84", st.size = 3) +
-  geom_text_repel(data = hosp_loc,aes(label=Type, geometry=geometry),stat="sf_coordinates",alpha=1,
-                  min.segment.length = 0,segment.size=1,size=3,fontface = 'bold', color = 'black',
-                  box.padding = unit(0.35, "lines"),point.padding = unit(0.5, "lines"),segment.color = 'black') 
-
-maps_clinical <- cowplot::plot_grid(panel_b, panel_c,
-                                    rel_widths = c(1, 1),
-                                    ncol=2,
-                                    labels = c("B", "C"))    
-
-map_survey <- cowplot::plot_grid(panel_0, panel_a,
-                                 rel_widths = c(0.8, 1), 
-                                 ncol = 2,
-                                 labels = c("A"))
-
-map_final <- cowplot::plot_grid(map_survey, maps_clinical, ncol=1)
-
-
-ggsave(map_final, filename = "figures/study_maps.pdf",
-       width = 7, height = 9, dpi = 900)
-
-
-# demographic pyramids ---------------------------------------------------------
-
-survey <- bind_rows(
-  read_csv("serochit_data/baseline_individual_survey_careseek1a.csv"),
-  read_csv("serochit_data/baseline_individual_survey_careseek1b.csv"),
-  read_csv("serochit_data/baseline_individual_survey_careseek2.csv") %>% mutate(round = as.character(round)) %>% select(-txt_injury1_trans),
-  read_csv("serochit_data/baseline_individual_survey_careseek3.csv") %>% mutate(round = as.character(round)) %>% select(-txt_injury1_trans)
-) 
-ids <- read_csv("serochit_data/kav_unique_ids.csv")
-
-survey <- survey %>% 
-  mutate(num_rounds = if_else(ID %in% ids$id, "Serological Data", "Survey"))
-
-cdat <- read_csv("serochit_data/census_data_sex_age_sitakunda.csv") %>% 
+cdat <- read_csv("data/census_data_sex_age_sitakunda.csv") %>% 
   filter(Age != "100+") %>% 
   mutate(prop_male = 100*`Male Population`/sum(`Both Sexes Population`),
          prop_female = 100*`Female Population`/sum(`Both Sexes Population`))
@@ -688,65 +534,5 @@ cowplot::plot_grid(pyramid_final2,
                    ncol=1,
                    rel_heights = c(0.95, 0.05))
 dev.off()
-
-
-
-#  vibriocidal density plots and trajectories ---------------------------------------------------------
-
-vib_dat <- read_csv(here::here("serochit_data/vibriocidal_titers.csv"))
-enrol_dates <- read_csv(here::here("serochit_data/serochit_enrol_dates.csv")) %>% 
-  mutate(round = str_sub(round,2)) %>% rename(id=ID) 
-vib_unique_ids <- read_csv(here::here("serochit_data/kav_unique_ids.csv")) ## ids of individuals with serum samples all 3 rounds; N=1785
-ids_r0A <- read_csv("serochit_data/baseline_individual_survey_careseek1a.csv") %>% ## ids of individuals in R0A
-  dplyr::select(ID,hh_ID,round) %>% dplyr::rename(id=ID)
-
-vib_long <- vib_dat %>% pivot_longer(c(ogawa_1:ogawa_3,inaba_1:inaba_3),names_sep = "_",
-                                     names_to=c("serotype","round"),values_to = "titer") %>%
-  select(id,status_1:status_3,round,serotype,titer) %>% dplyr::mutate(round_0=ifelse(id %in% ids_r0A$id & round=="1","1a",round)) %>%
-  dplyr::mutate(round_0=recode(round_0,"1" = "1b"))
-vib_long <- left_join(vib_long,enrol_dates)
-vib_long <- left_join(vib_long,vib_long %>% group_by(id,serotype) %>% 
-                        summarize(fd = max(diff(log2(na.omit(titer))),na.rm=T)) %>%
-                        mutate(sero_prof=if_else(fd>=2,"Sero-converter","Stable/sero-reverter"),
-                               sero_prof_alpha=if_else(sero_prof=="Sero-converter",.7,.1),
-                               sero_prof_col=if_else(sero_prof=="Sero-converter","red","grey10")))
-
-panel_d <- vib_long %>% dplyr::filter(serotype=="ogawa") %>%
-  dplyr::filter(id %in% vib_unique_ids$id) %>%
-  ggplot(aes(x=dt_interview,y=log2(titer),group=id)) + 
-  geom_jitter(pch=1,size=.5,col="grey80",alpha=.5) + 
-  geom_line(aes(color=sero_prof,alpha=sero_prof_alpha)) + 
-  scale_color_manual(values=c("#c41049","#1b8fa1"),name="",guide = guide_legend(reverse = TRUE)) +
-  theme_minimal() +
-  xlim(c(as.Date("2021-01-01"),as.Date("2022-03-02"))) +
-  xlab("") +
-  ylab("Log2(vibriocidal titer)") +
-  theme(legend.position = c(.05,.85)) + 
-  guides(alpha = "none")
-
-## distribution of ogawa titers by round
-to_string <- as_labeller(c('1' = "R0", '2' = "R1", '3' = "R2"))
-mu <- vib_long %>% filter(serotype=="ogawa") %>% 
-  dplyr::filter(id %in% vib_unique_ids$id) %>%
-  dplyr::filter(!is.na(titer)) %>% dplyr::group_by(round) %>% dplyr::summarise(grp.mean=mean(titer))
-
-panel_titer <- vib_long %>% filter(serotype=="ogawa") %>% 
-  dplyr::filter(id %in% vib_unique_ids$id) %>%
-  ggplot(aes(x=titer,group_by=serotype)) + 
-  geom_density(alpha=0.6, aes(fill=round), show.legend = FALSE) + 
-  scale_fill_manual(values=c("#654ea3","#107d89","#92244e")) + 
-  facet_grid(round~., labeller = to_string) + scale_x_continuous(trans="log2", breaks = c(0,5,10,20,40,80,160,320,640,1280,2560,5120)) + 
-  theme_minimal() + theme(axis.text = element_text(size = 8.5)) + 
-  geom_vline(data=mu, aes(xintercept=grp.mean,color=round),linetype="longdash", show.legend = FALSE) +
-  scale_color_manual(values=c("#654ea3","#107d89","#92244e")) +
-  xlab("Titer") +
-  ylab("Density") + geom_rug()
-
-## vibriocidal titer figure
-titer_figure <- panel_titer  + panel_d + 
-  patchwork::plot_layout(widths = c(2, 3)) + patchwork::plot_annotation(tag_levels = 'A')
-
-ggsave(titer_figure, filename = "figures/titer_figure.png",
-       width = 8, height = 5, dpi = 300)
 
 

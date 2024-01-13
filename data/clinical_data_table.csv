@@ -1,0 +1,999 @@
+Site,Sex,Age,Age group,Patient Type,Dehydration status,Culture,PCR,rdt_result,Self-reported antibiotic use 48 hours prior to admission,No. of days between symptom onset and seeking care,No. of days between healthcare facility admission and discharge
+BITID,Male,1,<5,Inpatient,Some,NA,Negative,Negative,0,5,2
+BITID,Female,62,5-64,Inpatient,Some,NA,Negative,Negative,0,4,1
+BITID,Male,1,<5,Inpatient,Some,NA,Negative,Negative,0,3,1
+BITID,Male,2,<5,Inpatient,Some,NA,Positive,Negative,0,3,1
+BITID,Male,1,<5,Inpatient,Some,NA,Negative,Negative,0,3,2
+BITID,Male,1,<5,Inpatient,Some,NA,Positive,Negative,1,3,2
+BITID,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,2
+BITID,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,2
+BITID,Male,2,<5,Inpatient,Some,NA,Positive,Negative,1,0,2
+BITID,Female,1,<5,Inpatient,Some,NA,Positive,Negative,1,4,1
+BITID,Female,47,5-64,Inpatient,Some,NA,Negative,Negative,1,1,2
+BITID,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,2,5
+BITID,Male,1,<5,Inpatient,Some,NA,Positive,Negative,0,1,3
+BITID,Female,1,<5,Inpatient,Some,NA,Positive,Negative,1,1,1
+BITID,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,1
+BITID,Female,1,<5,Inpatient,Some,NA,Positive,Negative,1,3,3
+BITID,Female,22,5-64,Inpatient,Some,NA,Negative,Negative,1,0,1
+BITID,Female,40,5-64,Inpatient,Some,NA,Negative,Negative,1,1,2
+BITID,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,2,4
+BITID,Male,1,<5,Inpatient,Some,NA,Positive,Negative,1,3,2
+BITID,Male,50,5-64,Inpatient,Some,NA,Negative,Negative,0,1,1
+BITID,Female,7,5-64,Inpatient,Some,NA,Negative,Negative,1,0,2
+BITID,Male,2,<5,Inpatient,Some,NA,Positive,Negative,1,3,1
+BITID,Male,3,<5,Inpatient,Some,Negative,Negative,Positive,1,0,3
+BITID,Male,2,<5,Inpatient,Some,Negative,Negative,Positive,1,3,2
+BITID,Female,1,<5,Inpatient,Some,NA,Positive,Negative,1,1,1
+BITID,Male,3,<5,Inpatient,Some,NA,Positive,Negative,1,2,4
+BITID,Male,2,<5,Inpatient,Some,Negative,Negative,Positive,1,1,1
+BITID,Female,80,65+,Inpatient,Some,NA,Negative,Negative,1,0,1
+BITID,Female,65,65+,Inpatient,Some,NA,Negative,Negative,0,1,2
+BITID,Female,2,<5,Inpatient,Some,Negative,Negative,Positive,1,4,2
+BITID,Female,1,<5,Inpatient,Some,NA,Positive,Negative,1,1,3
+BITID,Male,40,5-64,Inpatient,Severe,NA,Negative,Negative,0,1,1
+BITID,Male,2,<5,Inpatient,Some,NA,Negative,Negative,1,1,1
+BITID,Female,40,5-64,Inpatient,Some,NA,Negative,Negative,1,1,2
+BITID,Female,18,5-64,Inpatient,Some,Negative,Positive,Positive,1,0,3
+BITID,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,2,2
+BITID,Male,28,5-64,Inpatient,Some,NA,Negative,Negative,0,1,2
+BITID,Male,36,5-64,Inpatient,Some,NA,Negative,Negative,1,1,2
+BITID,Female,50,5-64,Inpatient,Some,Positive,Positive,Positive,1,1,2
+BITID,Male,33,5-64,Inpatient,Some,NA,Negative,Negative,1,1,2
+BITID,Female,50,5-64,Inpatient,Some,NA,Negative,Negative,1,2,3
+BITID,Female,40,5-64,Inpatient,Some,Negative,Negative,Positive,1,1,1
+BITID,Female,28,5-64,Inpatient,Some,NA,Negative,Negative,1,0,1
+BITID,Male,2,<5,Inpatient,Some,Negative,Negative,Positive,0,11,4
+BITID,Male,40,5-64,Inpatient,Some,NA,Negative,Negative,1,0,1
+BITID,Female,60,5-64,Inpatient,Some,Positive,Positive,Positive,1,0,2
+BITID,Female,26,5-64,Inpatient,Some,NA,Negative,Negative,0,0,1
+BITID,Male,33,5-64,Inpatient,Some,NA,Negative,Negative,0,1,0
+BITID,Male,3,<5,Inpatient,Some,Negative,Positive,Positive,1,1,2
+BITID,Male,24,5-64,Inpatient,Some,Negative,Positive,Positive,1,1,1
+BITID,Female,2,<5,Inpatient,Some,NA,Negative,Negative,0,0,3
+BITID,Male,2,<5,Inpatient,Some,Negative,Negative,Positive,1,1,1
+BITID,Female,50,5-64,Inpatient,Some,NA,Negative,Negative,1,0,1
+BITID,Male,34,5-64,Inpatient,Some,NA,Negative,Negative,0,1,2
+BITID,Female,45,5-64,Inpatient,Some,NA,Negative,Negative,0,0,1
+BITID,Female,46,5-64,Inpatient,Some,NA,Negative,Negative,1,2,1
+BITID,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,8,1
+BITID,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,4,0
+BITID,Female,50,5-64,Inpatient,Some,NA,Negative,Negative,0,0,1
+BITID,Male,29,5-64,Inpatient,Some,NA,Negative,Negative,1,0,0
+BITID,Male,26,5-64,Inpatient,Some,NA,Negative,Negative,1,2,1
+BITID,Male,1,<5,Inpatient,Some,NA,Negative,Negative,0,0,2
+BITID,Female,45,5-64,Inpatient,Severe,Positive,Positive,Positive,0,0,1
+BITID,Male,28,5-64,Inpatient,Some,Negative,Positive,Positive,1,1,2
+BITID,Male,36,5-64,Inpatient,Some,NA,Negative,Negative,1,1,1
+BITID,Female,25,5-64,Inpatient,Some,Positive,Positive,Positive,0,1,0
+BITID,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,1
+BITID,Male,35,5-64,Inpatient,Some,NA,Negative,Negative,1,0,2
+BITID,Female,55,5-64,Inpatient,Some,NA,Negative,Negative,1,1,1
+BITID,Male,27,5-64,Inpatient,Some,Positive,Positive,Positive,0,0,3
+BITID,Male,23,5-64,Inpatient,Some,Negative,Negative,Positive,0,0,1
+BITID,Female,20,5-64,Inpatient,Some,NA,Negative,Negative,1,1,1
+BITID,Male,1,<5,Inpatient,Some,Positive,Positive,Positive,1,1,1
+BITID,Female,55,5-64,Inpatient,Some,Negative,Negative,Positive,1,1,2
+BITID,Male,65,65+,Inpatient,Some,NA,Negative,Negative,0,1,1
+BITID,Female,69,65+,Inpatient,Some,Negative,Negative,Positive,1,1,1
+BITID,Male,22,5-64,Inpatient,Some,Positive,Positive,Positive,0,0,1
+BITID,Male,22,5-64,Inpatient,Some,NA,Negative,Negative,0,0,1
+BITID,Male,70,65+,Inpatient,Severe,Negative,Negative,Positive,1,1,3
+BITID,Male,50,5-64,Inpatient,Some,Positive,Positive,Positive,1,1,3
+BITID,Female,25,5-64,Inpatient,Some,NA,Negative,Negative,0,1,1
+BITID,Male,48,5-64,Inpatient,Some,NA,Negative,Negative,1,2,2
+BITID,Female,2,<5,Inpatient,Some,Positive,Positive,Positive,0,2,0
+BITID,Male,23,5-64,Inpatient,Some,Positive,Positive,Positive,0,1,3
+BITID,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,1
+BITID,Male,50,5-64,Inpatient,Some,NA,Negative,Negative,1,2,1
+BITID,Female,50,5-64,Inpatient,Some,NA,Negative,Negative,1,1,3
+BITID,Male,70,65+,Inpatient,Some,NA,Negative,Negative,1,1,1
+BITID,Male,24,5-64,Inpatient,Some,Positive,Positive,Positive,1,0,2
+BITID,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,1
+BITID,Female,11,5-64,Inpatient,Some,NA,Negative,Negative,1,1,1
+BITID,Male,28,5-64,Inpatient,Some,NA,Negative,Negative,1,2,0
+BITID,Female,76,65+,Inpatient,Severe,Negative,Positive,Positive,1,2,1
+BITID,Male,24,5-64,Inpatient,Some,Positive,Positive,Positive,0,1,2
+BITID,Female,2,<5,Inpatient,Some,NA,Negative,Negative,1,0,3
+BITID,Female,30,5-64,Inpatient,Some,NA,Negative,Negative,1,3,0
+BITID,Female,72,65+,Inpatient,Some,Positive,Positive,Positive,1,0,2
+BITID,Male,17,5-64,Inpatient,Some,NA,Negative,Negative,1,1,1
+BITID,Female,25,5-64,Inpatient,Some,NA,Negative,Negative,1,0,1
+BITID,Female,45,5-64,Inpatient,Some,Negative,Positive,Positive,0,1,3
+BITID,Male,1,<5,Inpatient,Some,NA,Negative,Negative,0,1,2
+BITID,Female,25,5-64,Inpatient,Some,NA,Positive,Negative,1,1,1
+BITID,Male,55,5-64,Inpatient,Severe,Negative,Positive,Positive,1,4,2
+BITID,Male,4,<5,Inpatient,Severe,Negative,Negative,Positive,1,2,1
+BITID,Male,17,5-64,Inpatient,Some,Positive,Positive,Positive,1,2,1
+BITID,Male,32,5-64,Inpatient,Some,NA,Positive,Negative,1,1,2
+BITID,Male,70,65+,Inpatient,Some,NA,Negative,Negative,1,0,3
+BITID,Female,20,5-64,Inpatient,Some,Positive,Positive,Positive,0,1,2
+BITID,Male,16,5-64,Inpatient,Severe,Positive,Positive,Positive,0,1,2
+BITID,Female,28,5-64,Inpatient,Some,NA,Negative,Negative,0,0,0
+BITID,Male,10,5-64,Inpatient,Some,NA,Positive,Negative,1,1,2
+BITID,Male,51,5-64,Inpatient,Some,NA,Negative,Negative,1,1,2
+BITID,Female,14,5-64,Inpatient,Severe,Positive,Negative,Positive,0,1,1
+BITID,Female,25,5-64,Inpatient,Some,NA,Negative,Negative,1,4,3
+BITID,Female,25,5-64,Inpatient,Some,NA,Negative,Negative,1,1,1
+BITID,Female,50,5-64,Inpatient,Some,Negative,Positive,Positive,0,0,1
+BITID,Female,17,5-64,Inpatient,Some,NA,Negative,Negative,1,1,2
+BITID,Male,18,5-64,Inpatient,Severe,Positive,Positive,Positive,1,0,1
+BITID,Male,75,65+,Inpatient,Some,Positive,Positive,Positive,0,0,2
+BITID,Male,22,5-64,Inpatient,Some,NA,Positive,Negative,0,1,2
+BITID,Male,24,5-64,Inpatient,Some,Positive,Positive,Positive,0,0,2
+BITID,Female,30,5-64,Inpatient,Severe,Positive,Positive,Positive,0,1,2
+BITID,Female,22,5-64,Inpatient,Severe,Positive,Positive,Positive,1,0,1
+BITID,Male,50,5-64,Inpatient,Some,NA,Negative,Negative,1,1,0
+BITID,Female,30,5-64,Inpatient,Some,NA,Negative,Negative,0,0,1
+BITID,Female,25,5-64,Inpatient,Some,Positive,Positive,Positive,0,0,1
+BITID,Female,20,5-64,Inpatient,Some,Negative,Positive,Positive,0,0,2
+BITID,Female,35,5-64,Inpatient,Some,Positive,Positive,Positive,1,0,0
+BITID,Female,36,5-64,Inpatient,Some,NA,Negative,Negative,1,2,2
+BITID,Female,30,5-64,Inpatient,Some,NA,Negative,Negative,0,0,3
+BITID,Male,1,<5,Inpatient,Some,NA,Negative,Negative,0,0,1
+BITID,Male,40,5-64,Inpatient,Some,Positive,Positive,Positive,1,1,1
+BITID,Male,55,5-64,Inpatient,Some,Negative,Positive,Positive,0,1,2
+BITID,Female,50,5-64,Inpatient,Some,NA,Negative,Negative,0,1,1
+BITID,Female,60,5-64,Inpatient,Some,NA,Negative,Negative,1,1,2
+BITID,Male,34,5-64,Inpatient,Severe,Negative,Positive,Positive,1,0,2
+BITID,Female,47,5-64,Inpatient,Some,NA,Negative,Negative,1,1,1
+BITID,Female,40,5-64,Inpatient,Some,NA,Positive,Negative,0,1,1
+BITID,Male,21,5-64,Inpatient,Some,NA,Negative,Negative,0,0,2
+BITID,Male,45,5-64,Inpatient,Some,NA,Negative,Negative,1,1,2
+BITID,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,3,1
+BITID,Male,45,5-64,Inpatient,Some,NA,Negative,Negative,1,1,1
+BITID,Male,1,<5,Inpatient,Some,NA,Negative,Negative,0,1,1
+BITID,Female,18,5-64,Inpatient,Some,NA,Negative,Negative,1,8,1
+BITID,Male,26,5-64,Inpatient,Some,NA,Positive,Negative,1,1,0
+BITID,Female,24,5-64,Inpatient,Some,Positive,Positive,Positive,0,1,1
+BITID,Male,45,5-64,Inpatient,Some,NA,Negative,Negative,1,3,1
+BITID,Female,7,5-64,Inpatient,Some,Positive,Positive,Positive,0,1,1
+BITID,Male,6,5-64,Inpatient,Some,Positive,Positive,Positive,1,1,2
+BITID,Female,32,5-64,Inpatient,Some,NA,Positive,Negative,1,1,2
+BITID,Female,40,5-64,Inpatient,Some,NA,Negative,Negative,1,1,1
+BITID,Male,2,<5,Inpatient,Some,NA,Negative,Negative,1,1,1
+BITID,Male,20,5-64,Inpatient,Some,Negative,Positive,Positive,1,3,2
+BITID,Female,27,5-64,Inpatient,Some,NA,Negative,Negative,1,1,0
+BITID,Female,35,5-64,Inpatient,Some,NA,Negative,Negative,0,2,2
+BITID,Female,30,5-64,Inpatient,Some,NA,Negative,Negative,0,1,1
+BITID,Female,37,5-64,Inpatient,Some,NA,Negative,Negative,1,1,1
+BITID,Female,35,5-64,Inpatient,Some,NA,Negative,Negative,1,1,1
+BITID,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,2
+BITID,Female,2,<5,Inpatient,Some,NA,Negative,Negative,1,1,0
+BITID,Male,18,5-64,Inpatient,Some,Positive,Positive,Positive,1,1,3
+BITID,Male,25,5-64,Inpatient,Some,Positive,Positive,Positive,0,1,2
+BITID,Male,20,5-64,Inpatient,Some,NA,Negative,Negative,0,1,1
+BITID,Female,3,<5,Inpatient,Some,NA,Negative,Negative,1,1,2
+BITID,Male,60,5-64,Inpatient,Some,NA,Positive,Negative,0,1,1
+BITID,Male,30,5-64,Inpatient,Some,Positive,Positive,Positive,1,1,2
+BITID,Male,38,5-64,Inpatient,Some,NA,Negative,Negative,1,0,1
+BITID,Male,42,5-64,Inpatient,Some,Positive,Positive,Positive,0,1,1
+BITID,Male,1,<5,Inpatient,Some,NA,Negative,Negative,0,2,1
+BITID,Female,40,5-64,Inpatient,Some,NA,Negative,Negative,1,1,1
+BITID,Female,42,5-64,Inpatient,Some,NA,Negative,Negative,0,0,1
+BITID,Female,22,5-64,Inpatient,Some,NA,Negative,Negative,1,2,1
+BITID,Female,28,5-64,Inpatient,Some,NA,Negative,Negative,1,0,1
+BITID,Female,72,65+,Inpatient,Some,NA,Negative,Negative,0,1,1
+BITID,Female,2,<5,Inpatient,Some,NA,Negative,Negative,0,2,1
+BITID,Male,28,5-64,Inpatient,Some,NA,Negative,Negative,1,2,2
+BITID,Female,19,5-64,Inpatient,Some,NA,Negative,Negative,1,1,1
+BITID,Female,23,5-64,Inpatient,Some,NA,Negative,Negative,1,2,1
+BITID,Male,40,5-64,Inpatient,Some,Negative,Negative,Positive,1,2,1
+BITID,Female,20,5-64,Inpatient,Some,NA,Negative,Negative,0,1,1
+BITID,Female,58,5-64,Inpatient,Some,Negative,Negative,Positive,1,2,3
+BITID,Female,35,5-64,Inpatient,Some,NA,Negative,Negative,0,0,2
+BITID,Male,13,5-64,Inpatient,Severe,NA,Negative,Negative,0,0,2
+BITID,Female,65,65+,Inpatient,Some,NA,Negative,Negative,1,1,3
+BITID,Male,47,5-64,Inpatient,Some,NA,Negative,Negative,1,1,1
+BITID,Female,22,5-64,Inpatient,Some,Positive,Positive,Positive,0,0,2
+BITID,Female,50,5-64,Inpatient,Some,NA,Negative,Negative,1,1,1
+BITID,Female,54,5-64,Inpatient,Some,NA,Negative,Negative,0,1,2
+BITID,Male,26,5-64,Inpatient,Some,Positive,Positive,Positive,1,1,1
+BITID,Male,31,5-64,Inpatient,Some,NA,Negative,Negative,0,1,1
+BITID,Male,3,<5,Inpatient,Some,NA,Negative,Negative,1,3,1
+BITID,Male,60,5-64,Inpatient,Some,Positive,Positive,Positive,0,0,3
+BITID,Female,30,5-64,Inpatient,Some,NA,Negative,Negative,1,2,1
+BITID,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,2
+BITID,Female,3,<5,Inpatient,Some,NA,Negative,Negative,0,1,1
+BITID,Female,70,65+,Inpatient,Some,NA,Negative,Negative,1,1,2
+BITID,Female,35,5-64,Inpatient,Some,NA,Negative,Negative,0,0,3
+BITID,Male,28,5-64,Inpatient,Some,NA,Positive,Negative,1,0,1
+BITID,Female,32,5-64,Inpatient,Some,Positive,Positive,Positive,0,0,3
+BITID,Female,56,5-64,Inpatient,Some,NA,Negative,Negative,0,1,1
+BITID,Male,26,5-64,Inpatient,Some,NA,Positive,Negative,0,0,2
+BITID,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,2
+BITID,Male,1,<5,Inpatient,Some,NA,Negative,Negative,0,1,2
+BITID,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,3,1
+BITID,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,2,2
+BITID,Male,3,<5,Inpatient,Some,NA,Negative,Negative,1,1,1
+BITID,Male,35,5-64,Inpatient,Some,NA,Negative,Negative,1,2,0
+BITID,Female,4,<5,Inpatient,Some,NA,Negative,Negative,0,0,1
+BITID,Male,1,<5,Inpatient,Some,NA,Negative,Negative,0,2,1
+BITID,Female,68,65+,Inpatient,Some,NA,Negative,Negative,1,1,2
+BITID,Female,2,<5,Inpatient,Some,NA,Negative,Negative,1,0,3
+BITID,Male,35,5-64,Inpatient,Some,NA,Negative,Negative,0,1,1
+BITID,Male,40,5-64,Inpatient,Some,Negative,Negative,Positive,1,1,1
+BITID,Male,2,<5,Inpatient,Some,NA,Negative,Negative,1,1,2
+BITID,Male,2,<5,Inpatient,Some,NA,Negative,Negative,1,1,3
+BITID,Male,75,65+,Inpatient,Some,NA,Negative,Negative,1,1,1
+BITID,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,3,4
+BITID,Male,2,<5,Inpatient,Some,NA,Negative,Negative,1,1,3
+BITID,Male,40,5-64,Inpatient,Some,NA,Negative,Negative,1,2,3
+BITID,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,1
+BITID,Male,28,5-64,Inpatient,Some,Negative,Negative,Positive,1,2,2
+BITID,Male,1,<5,Outpatient,Some,NA,Negative,Negative,1,1,3
+BITID,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,3
+BITID,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,2,2
+BITID,Female,18,5-64,Inpatient,Some,NA,Negative,Negative,1,0,1
+BITID,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,2
+BITID,Male,32,5-64,Inpatient,Some,NA,Negative,Negative,0,0,1
+BITID,Male,21,5-64,Inpatient,Some,NA,Negative,Negative,0,0,1
+BITID,Male,1,<5,Inpatient,Some,NA,Negative,Negative,0,1,3
+BITID,Male,80,65+,Inpatient,Some,Positive,Positive,Positive,0,1,2
+BITID,Male,2,<5,Inpatient,Some,NA,Negative,Negative,1,1,1
+BITID,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,3
+BITID,Male,1,<5,Inpatient,Some,NA,Negative,Negative,0,1,2
+BITID,Male,55,5-64,Inpatient,Some,NA,Negative,Negative,1,1,1
+BITID,Female,48,5-64,Inpatient,Some,Positive,Positive,Positive,0,0,1
+BITID,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,3,2
+BITID,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,2
+BITID,Female,45,5-64,Inpatient,Severe,Positive,Negative,Positive,0,0,1
+BITID,Male,40,5-64,Inpatient,Some,NA,Negative,Negative,0,1,2
+BITID,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,4,1
+BITID,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,2
+BITID,Female,65,65+,Inpatient,Some,NA,Negative,Negative,1,1,3
+BITID,Female,26,5-64,Inpatient,Some,NA,Negative,Negative,0,1,3
+BITID,Male,30,5-64,Inpatient,Some,NA,Negative,Negative,1,1,2
+BITID,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,3,3
+BITID,Male,7,5-64,Inpatient,Some,NA,Negative,Negative,1,1,1
+BITID,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,4,3
+BITID,Female,2,<5,Inpatient,Some,NA,Negative,Negative,1,1,3
+BITID,Male,1,<5,Inpatient,Some,NA,Negative,Negative,0,1,2
+BITID,Female,5,5-64,Inpatient,Some,NA,Negative,Negative,1,1,2
+BITID,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,2,2
+BITID,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,3
+BITID,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,3
+BITID,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,2
+BITID,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,3
+BITID,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,0,1
+BITID,Male,60,5-64,Inpatient,Some,NA,Negative,Negative,1,1,2
+BITID,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,2
+BITID,Female,25,5-64,Inpatient,Some,NA,Negative,Negative,0,0,1
+BITID,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,0,2
+BITID,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,5
+BITID,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,5
+BITID,Male,30,5-64,Inpatient,Some,NA,Negative,Negative,1,1,2
+BITID,Male,2,<5,Inpatient,Some,NA,Negative,Negative,1,1,3
+BITID,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,5,2
+BITID,Male,1,<5,Inpatient,Some,NA,Negative,Negative,0,2,0
+BITID,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,2,2
+BITID,Female,2,<5,Inpatient,Some,NA,Negative,Negative,1,1,4
+BITID,Male,3,<5,Inpatient,Some,NA,Negative,Negative,1,0,1
+BITID,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,2,2
+BITID,Female,43,5-64,Inpatient,Some,NA,Negative,Negative,1,0,2
+BITID,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,2,2
+BITID,Male,2,<5,Inpatient,Some,NA,Negative,Negative,1,1,1
+BITID,Male,50,5-64,Inpatient,Some,NA,Negative,Negative,1,1,1
+BITID,Female,23,5-64,Inpatient,Some,NA,Negative,Negative,1,1,2
+BITID,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,3,1
+BITID,Male,45,5-64,Inpatient,Some,NA,Negative,Negative,1,1,2
+BITID,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,3,1
+BITID,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,2,1
+BITID,Female,2,<5,Inpatient,Some,NA,Negative,Negative,1,1,3
+BITID,Female,1,<5,Inpatient,Some,NA,Negative,Negative,0,1,2
+BITID,Female,70,65+,Inpatient,Some,NA,Negative,Negative,1,1,1
+BITID,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,1
+BITID,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,2,1
+BITID,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,2,3
+BITID,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,1
+BITID,Female,40,5-64,Inpatient,Some,NA,Negative,Negative,1,0,1
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,None,NA,Negative,Negative,1,2,2
+Sitakunda Upazila Health Complex,Male,3,<5,Inpatient,Some,NA,Negative,Negative,1,3,1
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,Positive,Negative,1,7,3
+Sitakunda Upazila Health Complex,Male,36,5-64,Inpatient,Some,NA,Negative,Negative,1,2,2
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,Positive,Negative,1,1,2
+Sitakunda Upazila Health Complex,Female,40,5-64,Inpatient,Some,NA,Positive,Negative,1,1,1
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,2
+Sitakunda Upazila Health Complex,Female,2,<5,Inpatient,Some,NA,Negative,Negative,1,2,1
+Sitakunda Upazila Health Complex,Male,35,5-64,Outpatient,Some,NA,Negative,Negative,1,2,0
+Sitakunda Upazila Health Complex,Male,2,<5,Inpatient,Some,Negative,Negative,Positive,1,2,1
+Sitakunda Upazila Health Complex,Male,5,5-64,Inpatient,Some,NA,Negative,Negative,1,2,2
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,3,2
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,2,2
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,Negative,Negative,Positive,1,1,2
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,Positive,Negative,1,2,2
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,Negative,Negative,0,0,3
+Sitakunda Upazila Health Complex,Female,30,5-64,Inpatient,Some,NA,Negative,Negative,1,1,3
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Severe,NA,Negative,Negative,1,4,1
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,2
+Sitakunda Upazila Health Complex,Female,28,5-64,Inpatient,Some,NA,Positive,Negative,1,1,1
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,3,1
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,6
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,3,1
+Sitakunda Upazila Health Complex,Female,25,5-64,Inpatient,Some,NA,Negative,Negative,0,1,1
+Sitakunda Upazila Health Complex,Male,5,5-64,Inpatient,Some,NA,Negative,Negative,1,2,1
+Sitakunda Upazila Health Complex,Female,25,5-64,Inpatient,Some,NA,Negative,Negative,1,2,3
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,2,1
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,2,29
+Sitakunda Upazila Health Complex,Male,2,<5,Inpatient,Some,NA,Negative,Negative,0,2,2
+Sitakunda Upazila Health Complex,Male,31,5-64,Inpatient,Some,NA,Negative,Negative,1,1,1
+Sitakunda Upazila Health Complex,Male,45,5-64,Inpatient,Severe,NA,Negative,Negative,1,1,1
+Sitakunda Upazila Health Complex,Male,34,5-64,Inpatient,Some,NA,Negative,Negative,1,0,1
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,2,4
+Sitakunda Upazila Health Complex,Male,2,<5,Inpatient,Some,NA,Negative,Negative,1,5,1
+Sitakunda Upazila Health Complex,Male,2,<5,Inpatient,Some,NA,Negative,Negative,1,1,1
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,4
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,2
+Sitakunda Upazila Health Complex,Male,44,5-64,Inpatient,Some,NA,Negative,Negative,1,1,1
+Sitakunda Upazila Health Complex,Male,2,<5,Inpatient,Some,NA,Negative,Negative,1,3,1
+Sitakunda Upazila Health Complex,Male,34,5-64,Inpatient,Some,NA,Negative,Negative,1,1,2
+Sitakunda Upazila Health Complex,Female,19,5-64,Inpatient,Some,NA,Negative,Negative,0,1,1
+Sitakunda Upazila Health Complex,Male,2,<5,Inpatient,Some,NA,Negative,Negative,1,2,1
+Sitakunda Upazila Health Complex,Female,55,5-64,Inpatient,Some,NA,Negative,Negative,0,1,1
+Sitakunda Upazila Health Complex,Male,3,<5,Inpatient,Some,NA,Negative,Negative,1,1,1
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,2,2
+Sitakunda Upazila Health Complex,Female,70,65+,Inpatient,Some,NA,Negative,Negative,1,4,1
+Sitakunda Upazila Health Complex,Male,2,<5,Inpatient,Some,NA,Negative,Negative,1,3,1
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,3,1
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,2
+Sitakunda Upazila Health Complex,Male,8,5-64,Inpatient,Some,NA,Negative,Negative,1,2,1
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,Negative,Negative,Positive,1,2,1
+Sitakunda Upazila Health Complex,Female,50,5-64,Inpatient,Some,NA,Negative,Negative,1,2,1
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,3,1
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,2,2
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,2,2
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,4,1
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,2,1
+Sitakunda Upazila Health Complex,Male,5,5-64,Inpatient,Some,NA,Negative,Negative,1,1,1
+Sitakunda Upazila Health Complex,Female,25,5-64,Inpatient,Some,NA,Positive,Negative,1,2,2
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,2,2
+Sitakunda Upazila Health Complex,Male,45,5-64,Inpatient,Some,NA,Negative,Negative,1,1,2
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,1
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,0
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,Negative,Negative,Positive,1,1,1
+Sitakunda Upazila Health Complex,Male,18,5-64,Inpatient,Some,NA,Negative,Negative,1,3,1
+Sitakunda Upazila Health Complex,Female,25,5-64,Inpatient,Some,NA,Negative,Negative,1,1,3
+Sitakunda Upazila Health Complex,Female,22,5-64,Inpatient,Some,NA,Negative,Negative,1,1,1
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,Negative,Negative,Positive,1,4,1
+Sitakunda Upazila Health Complex,Female,15,5-64,Inpatient,Some,NA,Negative,Negative,1,2,2
+Sitakunda Upazila Health Complex,Male,40,5-64,Inpatient,Some,Positive,Positive,Positive,0,0,0
+Sitakunda Upazila Health Complex,Female,65,65+,Inpatient,Some,NA,Negative,Negative,1,1,1
+Sitakunda Upazila Health Complex,Female,7,5-64,Inpatient,Severe,Positive,Negative,Positive,1,1,2
+Sitakunda Upazila Health Complex,Female,25,5-64,Inpatient,Some,Positive,Positive,Positive,1,0,3
+Sitakunda Upazila Health Complex,Female,10,5-64,Inpatient,Some,Positive,Positive,Positive,1,0,4
+Sitakunda Upazila Health Complex,Female,40,5-64,Inpatient,Some,NA,Positive,Negative,0,1,3
+Sitakunda Upazila Health Complex,Male,7,5-64,Inpatient,Some,NA,Negative,Negative,1,1,3
+Sitakunda Upazila Health Complex,Male,2,<5,Inpatient,Some,NA,Negative,Negative,1,4,2
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,3,3
+Sitakunda Upazila Health Complex,Female,7,5-64,Inpatient,Some,Negative,Negative,Positive,1,1,1
+Sitakunda Upazila Health Complex,Female,60,5-64,Inpatient,Severe,Positive,Positive,Positive,1,2,1
+Sitakunda Upazila Health Complex,Male,18,5-64,Inpatient,Some,Negative,Positive,Positive,1,1,1
+Sitakunda Upazila Health Complex,Male,55,5-64,Inpatient,Some,NA,Negative,Negative,1,1,3
+Sitakunda Upazila Health Complex,Male,70,65+,Inpatient,Some,NA,Negative,Negative,1,1,3
+Sitakunda Upazila Health Complex,Female,60,5-64,Inpatient,Some,NA,Negative,Negative,1,2,2
+Sitakunda Upazila Health Complex,Female,2,<5,Inpatient,Severe,Positive,Positive,Positive,0,0,3
+Sitakunda Upazila Health Complex,Male,45,5-64,Inpatient,Some,NA,Negative,Negative,1,1,2
+Sitakunda Upazila Health Complex,Male,28,5-64,Inpatient,Some,Positive,Positive,Positive,1,1,5
+Sitakunda Upazila Health Complex,Male,18,5-64,Inpatient,Some,NA,Negative,Negative,1,2,4
+Sitakunda Upazila Health Complex,Female,30,5-64,Inpatient,Some,NA,Negative,Negative,1,2,-1
+Sitakunda Upazila Health Complex,Male,50,5-64,Inpatient,Some,Positive,Positive,Positive,1,1,2
+Sitakunda Upazila Health Complex,Female,66,65+,Inpatient,Some,NA,Negative,Negative,1,1,3
+Sitakunda Upazila Health Complex,Female,18,5-64,Inpatient,Some,Positive,Positive,Positive,1,1,3
+Sitakunda Upazila Health Complex,Male,26,5-64,Inpatient,Some,NA,Negative,Negative,1,1,1
+Sitakunda Upazila Health Complex,Male,35,5-64,Inpatient,Some,NA,Negative,Negative,1,1,6
+Sitakunda Upazila Health Complex,Female,80,65+,Inpatient,Some,NA,Negative,Negative,1,2,1
+Sitakunda Upazila Health Complex,Male,60,5-64,Inpatient,Some,NA,Negative,Negative,1,1,3
+Sitakunda Upazila Health Complex,Male,35,5-64,Inpatient,Some,NA,Negative,Negative,1,2,1
+Sitakunda Upazila Health Complex,Male,35,5-64,Inpatient,Some,NA,Negative,Negative,1,1,1
+Sitakunda Upazila Health Complex,Female,22,5-64,Inpatient,Some,NA,Positive,Negative,1,3,1
+Sitakunda Upazila Health Complex,Male,3,<5,Inpatient,Some,NA,Negative,Negative,1,1,0
+Sitakunda Upazila Health Complex,Male,30,5-64,Inpatient,Some,NA,Negative,Negative,0,1,-1
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,2,1
+Sitakunda Upazila Health Complex,Female,4,<5,Inpatient,Some,NA,Negative,Negative,1,1,1
+Sitakunda Upazila Health Complex,Female,2,<5,Inpatient,Some,NA,Negative,Negative,1,1,1
+Sitakunda Upazila Health Complex,Female,2,<5,Inpatient,Some,NA,Negative,Negative,1,1,2
+Sitakunda Upazila Health Complex,Male,35,5-64,Inpatient,Some,Positive,Positive,Positive,1,1,2
+Sitakunda Upazila Health Complex,Female,3,<5,Inpatient,Some,NA,Negative,Negative,1,1,2
+Sitakunda Upazila Health Complex,Female,36,5-64,Inpatient,Some,NA,Negative,Negative,1,1,3
+Sitakunda Upazila Health Complex,Female,20,5-64,Inpatient,Some,NA,Negative,Negative,1,1,2
+Sitakunda Upazila Health Complex,Female,80,65+,Inpatient,Some,NA,Negative,Negative,1,1,1
+Sitakunda Upazila Health Complex,Female,18,5-64,Inpatient,Some,NA,Negative,Negative,1,1,1
+Sitakunda Upazila Health Complex,Male,65,65+,Inpatient,Some,NA,Negative,Negative,1,2,1
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,0
+Sitakunda Upazila Health Complex,Female,50,5-64,Inpatient,Some,NA,Negative,Negative,1,1,1
+Sitakunda Upazila Health Complex,Female,45,5-64,Inpatient,Some,Positive,Positive,Positive,1,1,0
+Sitakunda Upazila Health Complex,Female,40,5-64,Inpatient,Some,NA,Negative,Negative,1,1,2
+Sitakunda Upazila Health Complex,Female,3,<5,Inpatient,Some,NA,Negative,Negative,1,2,1
+Sitakunda Upazila Health Complex,Male,36,5-64,Inpatient,Some,NA,Negative,Negative,1,1,2
+Sitakunda Upazila Health Complex,Female,34,5-64,Inpatient,Some,NA,Negative,Negative,1,1,1
+Sitakunda Upazila Health Complex,Male,3,<5,Inpatient,Some,NA,Negative,Negative,1,1,3
+Sitakunda Upazila Health Complex,Female,3,<5,Inpatient,Some,NA,Negative,Negative,1,2,1
+Sitakunda Upazila Health Complex,Male,18,5-64,Inpatient,Some,NA,Negative,Negative,1,2,1
+Sitakunda Upazila Health Complex,Female,21,5-64,Inpatient,Some,NA,Negative,Negative,1,1,2
+Sitakunda Upazila Health Complex,Female,27,5-64,Inpatient,Some,NA,Negative,Negative,1,2,1
+Sitakunda Upazila Health Complex,Female,45,5-64,Inpatient,Some,NA,Negative,Negative,1,2,4
+Sitakunda Upazila Health Complex,Male,65,65+,Inpatient,Some,Negative,Positive,Positive,1,1,1
+Sitakunda Upazila Health Complex,Female,18,5-64,Inpatient,Some,NA,Negative,Negative,1,2,1
+Sitakunda Upazila Health Complex,Female,35,5-64,Inpatient,Some,NA,Negative,Negative,1,0,1
+Sitakunda Upazila Health Complex,Female,40,5-64,Inpatient,Some,NA,Negative,Negative,0,1,1
+Sitakunda Upazila Health Complex,Female,33,5-64,Inpatient,Some,NA,Negative,Negative,0,1,1
+Sitakunda Upazila Health Complex,Female,24,5-64,Inpatient,Some,NA,Negative,Negative,0,0,1
+Sitakunda Upazila Health Complex,Male,50,5-64,Inpatient,Some,NA,Negative,Negative,1,3,1
+Sitakunda Upazila Health Complex,Female,28,5-64,Inpatient,Severe,NA,Negative,Negative,0,0,1
+Sitakunda Upazila Health Complex,Male,44,5-64,Inpatient,Severe,NA,Negative,Negative,1,2,2
+Sitakunda Upazila Health Complex,Female,55,5-64,Inpatient,Some,NA,Negative,Negative,1,2,1
+Sitakunda Upazila Health Complex,Male,30,5-64,Inpatient,Some,NA,Negative,Negative,1,2,2
+Sitakunda Upazila Health Complex,Male,16,5-64,Inpatient,Some,NA,Negative,Negative,1,1,0
+Sitakunda Upazila Health Complex,Female,45,5-64,Inpatient,Some,NA,Negative,Negative,1,2,1
+Sitakunda Upazila Health Complex,Male,70,65+,Inpatient,Some,NA,Negative,Negative,1,1,1
+Sitakunda Upazila Health Complex,Female,60,5-64,Inpatient,Some,NA,Negative,Negative,1,1,1
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,2
+Sitakunda Upazila Health Complex,Female,20,5-64,Inpatient,Some,NA,Negative,Negative,1,2,1
+Sitakunda Upazila Health Complex,Male,30,5-64,Inpatient,Severe,NA,Negative,Negative,1,1,1
+Sitakunda Upazila Health Complex,Female,3,<5,Inpatient,Some,NA,Negative,Negative,1,2,1
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,3
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,3,3
+Sitakunda Upazila Health Complex,Male,45,5-64,Inpatient,Some,NA,Negative,Negative,1,1,1
+Sitakunda Upazila Health Complex,Female,2,<5,Inpatient,Some,NA,Negative,Negative,1,2,0
+Sitakunda Upazila Health Complex,Female,40,5-64,Inpatient,Some,NA,Negative,Negative,1,1,2
+Sitakunda Upazila Health Complex,Male,33,5-64,Inpatient,Some,NA,Negative,Negative,1,1,1
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,2,1
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,2
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,2,3
+Sitakunda Upazila Health Complex,Male,25,5-64,Inpatient,Some,NA,Negative,Negative,1,0,1
+Sitakunda Upazila Health Complex,Female,23,5-64,Inpatient,Some,NA,Negative,Negative,1,0,2
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,2,2
+Sitakunda Upazila Health Complex,Male,38,5-64,Inpatient,Some,NA,Negative,Negative,1,1,1
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,2,3
+Sitakunda Upazila Health Complex,Female,36,5-64,Inpatient,Some,NA,Negative,Negative,1,1,2
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,2,2
+Sitakunda Upazila Health Complex,Female,27,5-64,Inpatient,Some,NA,Negative,Negative,1,1,1
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,3,1
+Sitakunda Upazila Health Complex,Female,19,5-64,Inpatient,Some,NA,Negative,Negative,1,1,1
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,2,2
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,2
+Sitakunda Upazila Health Complex,Male,20,5-64,Inpatient,Some,NA,Negative,Negative,0,0,1
+Sitakunda Upazila Health Complex,Female,21,5-64,Inpatient,Some,NA,Negative,Negative,1,2,1
+Sitakunda Upazila Health Complex,Male,3,<5,Inpatient,Some,NA,Negative,Negative,1,2,1
+Sitakunda Upazila Health Complex,Female,48,5-64,Inpatient,Some,NA,Negative,Negative,1,1,1
+Sitakunda Upazila Health Complex,Male,30,5-64,Inpatient,Some,NA,Negative,Negative,1,1,3
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,1
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,2,1
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,1
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,2,2
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,2,2
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,1
+Sitakunda Upazila Health Complex,Male,2,<5,Inpatient,Some,NA,Negative,Negative,1,1,1
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,2,1
+Sitakunda Upazila Health Complex,Female,6,5-64,Inpatient,Some,NA,Negative,Negative,1,1,1
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,2
+Sitakunda Upazila Health Complex,Male,32,5-64,Inpatient,Some,NA,Negative,Negative,1,1,2
+Sitakunda Upazila Health Complex,Female,2,<5,Inpatient,Some,NA,Negative,Negative,1,2,2
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,0
+Sitakunda Upazila Health Complex,Female,22,5-64,Inpatient,Some,NA,Negative,Negative,1,2,1
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,2
+Sitakunda Upazila Health Complex,Male,49,5-64,Inpatient,Some,NA,Negative,Negative,1,1,1
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,3
+Sitakunda Upazila Health Complex,Male,3,<5,Inpatient,Some,NA,Negative,Negative,1,1,2
+Sitakunda Upazila Health Complex,Female,2,<5,Inpatient,Some,NA,Negative,Negative,1,3,1
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,3
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,2
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,3,4
+Sitakunda Upazila Health Complex,Male,2,<5,Inpatient,Some,NA,Negative,Negative,1,2,4
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,2,2
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,2,2
+Sitakunda Upazila Health Complex,Female,35,5-64,Inpatient,Some,NA,Negative,Negative,1,1,2
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,2,2
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,3
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,3
+Sitakunda Upazila Health Complex,Male,60,5-64,Inpatient,Some,NA,Negative,Negative,1,1,3
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,3
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,2
+Sitakunda Upazila Health Complex,Male,7,5-64,Inpatient,Some,NA,Negative,Negative,1,1,3
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,3
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,4
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,2
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,2
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,0
+Sitakunda Upazila Health Complex,Female,2,<5,Inpatient,Some,NA,Negative,Negative,1,2,2
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,2
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,1,3
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,2,4
+Sitakunda Upazila Health Complex,Female,2,<5,Inpatient,Some,NA,Negative,Negative,1,2,2
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,Negative,Negative,1,2,3
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,Negative,Negative,1,2,2
+Sitakunda Upazila Health Complex,Male,7,5-64,Inpatient,Some,NA,Negative,Negative,1,2,2
+BITID,Male,1,<5,Inpatient,None,NA,NA,Negative,0,5,2
+BITID,Female,4,<5,Inpatient,Some,NA,NA,Negative,1,2,3
+BITID,Male,24,5-64,Inpatient,Some,NA,NA,Negative,0,1,2
+BITID,Male,2,<5,Inpatient,Some,NA,NA,Negative,0,4,1
+BITID,Female,30,5-64,Inpatient,Some,NA,NA,Negative,1,1,2
+BITID,Male,3,<5,Inpatient,Some,NA,NA,Negative,1,1,2
+BITID,Female,1,<5,Inpatient,Some,NA,NA,Negative,1,1,2
+BITID,Male,2,<5,Inpatient,Some,NA,NA,Negative,0,1,2
+BITID,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,3,1
+BITID,Male,1,<5,Inpatient,Some,NA,NA,Negative,0,2,2
+BITID,Female,1,<5,Inpatient,Some,NA,NA,Negative,1,1,2
+BITID,Male,2,<5,Inpatient,Some,NA,NA,Negative,1,1,2
+BITID,Male,2,<5,Inpatient,Some,NA,NA,Negative,1,1,2
+BITID,Female,55,5-64,Inpatient,None,NA,NA,Negative,0,1,1
+BITID,Male,2,<5,Inpatient,Some,NA,NA,Negative,1,1,2
+BITID,Female,1,<5,Inpatient,Some,NA,NA,Negative,1,5,2
+BITID,Female,1,<5,Inpatient,Some,NA,NA,Negative,1,1,3
+BITID,Male,22,5-64,Inpatient,Some,NA,NA,Negative,1,1,1
+BITID,Female,1,<5,Inpatient,Some,NA,NA,Negative,1,1,4
+BITID,Female,3,<5,Inpatient,Some,NA,NA,Negative,1,0,2
+BITID,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,2,2
+BITID,Female,35,5-64,Inpatient,Some,NA,NA,Negative,1,2,2
+BITID,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,5,1
+BITID,Male,40,5-64,Inpatient,Some,NA,NA,Negative,0,1,1
+BITID,Male,29,5-64,Inpatient,Some,NA,NA,Negative,1,2,1
+BITID,Female,25,5-64,Inpatient,Some,NA,NA,Negative,1,2,2
+BITID,Male,31,5-64,Inpatient,Some,NA,NA,Negative,0,1,0
+BITID,Male,14,5-64,Inpatient,Some,NA,NA,Negative,1,1,2
+BITID,Female,18,5-64,Inpatient,Some,NA,NA,Negative,0,1,0
+BITID,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,2,0
+BITID,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,3,4
+BITID,Female,2,<5,Inpatient,Some,NA,NA,Negative,1,3,4
+BITID,Male,2,<5,Inpatient,Some,NA,NA,Negative,1,1,1
+BITID,Male,56,5-64,Inpatient,Some,NA,NA,Negative,1,1,2
+BITID,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,3,6
+BITID,Male,2,<5,Inpatient,Some,NA,NA,Negative,1,3,2
+BITID,Male,30,5-64,Inpatient,Some,NA,NA,Negative,0,1,1
+BITID,Female,2,<5,Inpatient,Some,NA,NA,Negative,1,1,1
+BITID,Male,40,5-64,Inpatient,Some,NA,NA,Negative,0,0,1
+BITID,Female,50,5-64,Inpatient,Some,NA,NA,Negative,0,0,1
+BITID,Male,28,5-64,Inpatient,Some,NA,NA,Negative,1,0,1
+BITID,Male,45,5-64,Inpatient,Some,NA,NA,Negative,1,0,1
+BITID,Male,28,5-64,Inpatient,Some,NA,NA,Negative,1,1,1
+BITID,Female,21,5-64,Inpatient,Some,NA,NA,Negative,0,1,2
+BITID,Male,1,<5,Inpatient,Some,NA,NA,Negative,0,1,1
+BITID,Male,20,5-64,Inpatient,Some,NA,NA,Negative,1,1,3
+BITID,Female,2,<5,Inpatient,Some,NA,NA,Negative,1,3,1
+BITID,Female,1,<5,Inpatient,Some,NA,NA,Negative,1,1,3
+BITID,Female,22,5-64,Inpatient,Some,NA,NA,Negative,0,1,1
+BITID,Male,4,<5,Inpatient,Some,NA,NA,Negative,1,1,1
+BITID,Male,2,<5,Inpatient,Some,NA,NA,Negative,1,2,1
+BITID,Male,34,5-64,Inpatient,Some,NA,NA,Negative,0,0,1
+BITID,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,4,2
+BITID,Male,55,5-64,Inpatient,Some,NA,NA,Negative,0,1,1
+BITID,Male,46,5-64,Inpatient,Some,NA,NA,Negative,1,0,0
+BITID,Male,27,5-64,Inpatient,Some,NA,NA,Negative,0,0,1
+BITID,Female,25,5-64,Inpatient,Some,NA,NA,Negative,1,1,1
+BITID,Male,1,<5,Inpatient,Some,NA,NA,Negative,0,1,2
+BITID,Male,1,<5,Inpatient,Some,NA,NA,Negative,0,4,3
+BITID,Male,52,5-64,Inpatient,Some,NA,NA,Negative,1,1,1
+BITID,Female,9,5-64,Inpatient,Some,NA,NA,Negative,1,1,1
+BITID,Female,1,<5,Inpatient,Some,NA,NA,Negative,0,0,2
+BITID,Female,1,<5,Inpatient,Some,NA,NA,Negative,1,0,1
+BITID,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,1,2
+BITID,Male,70,65+,Inpatient,Some,NA,NA,Negative,1,1,1
+BITID,Female,1,<5,Inpatient,Some,NA,NA,Negative,1,3,0
+BITID,Female,27,5-64,Inpatient,Some,NA,NA,Negative,1,0,1
+BITID,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,0,1
+BITID,Male,2,<5,Inpatient,Some,NA,NA,Negative,1,1,1
+BITID,Female,3,<5,Inpatient,Some,NA,NA,Negative,0,1,1
+BITID,Male,5,5-64,Inpatient,Some,NA,NA,Negative,0,2,2
+BITID,Male,23,5-64,Inpatient,Severe,NA,NA,Negative,0,0,1
+BITID,Male,36,5-64,Inpatient,Some,NA,NA,Negative,1,1,1
+BITID,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,0,1
+BITID,Male,60,5-64,Inpatient,Some,NA,NA,Negative,0,1,1
+BITID,Male,19,5-64,Inpatient,Some,NA,NA,Negative,0,1,1
+BITID,Male,22,5-64,Inpatient,Some,NA,NA,Negative,0,0,1
+BITID,Female,38,5-64,Inpatient,Some,NA,NA,Negative,1,0,1
+BITID,Male,1,<5,Inpatient,Some,NA,NA,Negative,0,1,0
+BITID,Male,45,5-64,Inpatient,Some,NA,NA,Negative,1,0,2
+BITID,Female,60,5-64,Inpatient,Some,NA,NA,Negative,1,1,1
+BITID,Female,50,5-64,Inpatient,Some,NA,NA,Negative,0,0,1
+BITID,Male,50,5-64,Inpatient,Some,NA,NA,Negative,1,1,2
+BITID,Male,35,5-64,Inpatient,Some,NA,NA,Negative,1,2,1
+BITID,Male,2,<5,Inpatient,Some,NA,NA,Negative,1,1,1
+BITID,Female,32,5-64,Inpatient,Some,NA,NA,Negative,1,2,1
+BITID,Female,77,65+,Inpatient,Some,NA,NA,Negative,0,0,1
+BITID,Male,38,5-64,Inpatient,Some,NA,NA,Negative,1,0,1
+BITID,Male,50,5-64,Inpatient,Some,NA,NA,Negative,1,1,4
+BITID,Male,62,5-64,Inpatient,Some,NA,NA,Negative,1,1,1
+BITID,Female,25,5-64,Inpatient,Some,NA,NA,Negative,1,1,1
+BITID,Female,24,5-64,Inpatient,Some,NA,NA,Negative,1,1,1
+BITID,Male,6,5-64,Inpatient,Some,NA,NA,Negative,1,2,1
+BITID,Male,55,5-64,Inpatient,Some,NA,NA,Negative,1,1,1
+BITID,Female,40,5-64,Inpatient,Some,NA,NA,Negative,1,0,1
+BITID,Female,20,5-64,Inpatient,Some,NA,NA,Negative,1,0,1
+BITID,Male,45,5-64,Inpatient,Some,NA,NA,Negative,1,2,2
+BITID,Female,8,5-64,Inpatient,Some,NA,NA,Negative,1,1,1
+BITID,Female,55,5-64,Inpatient,Some,NA,NA,Negative,1,1,1
+BITID,Female,30,5-64,Inpatient,Some,NA,NA,Negative,0,1,1
+BITID,Female,11,5-64,Inpatient,Some,NA,NA,Negative,1,2,1
+BITID,Female,18,5-64,Inpatient,Some,NA,NA,Negative,0,1,2
+BITID,Female,60,5-64,Inpatient,Some,NA,NA,Negative,0,1,0
+BITID,Male,35,5-64,Inpatient,Some,NA,NA,Negative,1,1,1
+BITID,Female,35,5-64,Inpatient,Some,NA,NA,Negative,0,1,2
+BITID,Male,4,<5,Inpatient,Some,NA,NA,Negative,1,0,2
+BITID,Female,28,5-64,Inpatient,Some,NA,NA,Negative,1,0,2
+BITID,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,4,2
+BITID,Female,50,5-64,Inpatient,Some,NA,NA,Negative,1,1,1
+BITID,Female,40,5-64,Inpatient,Some,NA,NA,Negative,0,0,2
+BITID,Female,40,5-64,Inpatient,Some,NA,NA,Negative,0,0,1
+BITID,Female,50,5-64,Inpatient,Some,NA,NA,Negative,0,0,1
+BITID,Male,70,65+,Inpatient,Some,NA,NA,Negative,0,0,3
+BITID,Male,48,5-64,Inpatient,Some,NA,NA,Negative,1,0,2
+BITID,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,1,1
+BITID,Male,40,5-64,Inpatient,Some,NA,NA,Negative,1,1,2
+BITID,Female,40,5-64,Inpatient,Severe,NA,NA,Negative,1,0,1
+BITID,Male,45,5-64,Inpatient,Some,NA,NA,Negative,1,1,1
+BITID,Male,20,5-64,Inpatient,Some,NA,NA,Negative,1,3,1
+BITID,Male,2,<5,Inpatient,Some,NA,NA,Negative,0,0,1
+BITID,Female,15,5-64,Inpatient,Some,NA,NA,Negative,1,2,0
+BITID,Male,26,5-64,Inpatient,Some,NA,NA,Negative,1,1,1
+BITID,Female,60,5-64,Inpatient,Some,NA,NA,Negative,1,1,1
+BITID,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,2,1
+BITID,Male,50,5-64,Inpatient,Some,NA,NA,Negative,1,1,1
+BITID,Female,17,5-64,Inpatient,Some,NA,NA,Negative,1,2,1
+BITID,Female,28,5-64,Inpatient,Some,NA,NA,Negative,1,1,0
+BITID,Male,25,5-64,Inpatient,Some,NA,NA,Negative,1,1,3
+BITID,Female,28,5-64,Inpatient,Some,NA,NA,Negative,1,2,0
+BITID,Male,2,<5,Inpatient,Some,NA,NA,Negative,1,1,1
+BITID,Male,42,5-64,Inpatient,Some,NA,NA,Negative,1,1,1
+BITID,Male,32,5-64,Inpatient,Some,NA,NA,Negative,1,1,1
+BITID,Female,1,<5,Inpatient,Some,NA,NA,Negative,0,1,1
+BITID,Male,56,5-64,Inpatient,Some,NA,NA,Negative,1,3,1
+BITID,Female,1,<5,Inpatient,Some,NA,NA,Negative,1,4,1
+BITID,Male,61,5-64,Inpatient,Some,NA,NA,Negative,1,1,1
+BITID,Male,73,65+,Inpatient,Some,NA,NA,Negative,1,2,1
+BITID,Female,20,5-64,Inpatient,Some,NA,NA,Negative,0,1,1
+BITID,Female,45,5-64,Inpatient,Some,NA,NA,Negative,0,1,3
+BITID,Female,45,5-64,Inpatient,Some,NA,NA,Negative,1,1,1
+BITID,Male,46,5-64,Inpatient,Severe,NA,NA,Negative,1,2,1
+BITID,Female,60,5-64,Inpatient,Some,NA,NA,Negative,1,1,3
+BITID,Male,3,<5,Inpatient,Some,NA,NA,Negative,0,1,1
+BITID,Male,30,5-64,Inpatient,Some,NA,NA,Negative,1,2,2
+BITID,Female,1,<5,Inpatient,Some,NA,NA,Negative,1,2,1
+BITID,Male,30,5-64,Inpatient,Some,NA,NA,Negative,1,1,1
+BITID,Female,55,5-64,Inpatient,Some,NA,NA,Negative,1,1,2
+BITID,Female,28,5-64,Inpatient,Some,NA,NA,Negative,1,2,1
+BITID,Female,55,5-64,Inpatient,Some,NA,NA,Negative,0,1,3
+BITID,Female,1,<5,Inpatient,Some,NA,NA,Negative,0,0,2
+BITID,Male,2,<5,Inpatient,Some,NA,NA,Negative,1,3,2
+BITID,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,3,2
+BITID,Female,40,5-64,Inpatient,Some,NA,NA,Negative,0,0,3
+BITID,Male,1,<5,Inpatient,Some,NA,NA,Negative,0,1,2
+BITID,Male,1,<5,Inpatient,Some,NA,NA,Negative,0,0,1
+BITID,Female,1,<5,Inpatient,Some,NA,NA,Negative,1,2,1
+BITID,Male,50,5-64,Inpatient,Some,NA,NA,Negative,1,1,1
+BITID,Female,21,5-64,Inpatient,Some,NA,NA,Negative,0,0,1
+BITID,Female,19,5-64,Inpatient,Some,NA,NA,Negative,0,0,1
+BITID,Female,9,5-64,Inpatient,Some,NA,NA,Negative,1,1,1
+BITID,Male,1,<5,Inpatient,Some,NA,NA,Negative,0,1,1
+BITID,Female,31,5-64,Inpatient,Some,NA,NA,Negative,1,0,3
+BITID,Female,30,5-64,Inpatient,Some,NA,NA,Negative,0,0,2
+BITID,Male,35,5-64,Inpatient,Some,NA,NA,Negative,1,1,3
+BITID,Female,35,5-64,Inpatient,Some,NA,NA,Negative,0,1,1
+BITID,Female,27,5-64,Inpatient,Some,NA,NA,Negative,1,2,2
+BITID,Male,40,5-64,Inpatient,Some,NA,NA,Negative,0,0,1
+BITID,Female,1,<5,Inpatient,Some,NA,NA,Negative,1,3,1
+BITID,Female,2,<5,Inpatient,Some,NA,NA,Negative,0,3,1
+BITID,Male,1,<5,Inpatient,Some,NA,NA,Negative,0,2,1
+BITID,Male,21,5-64,Inpatient,Some,NA,NA,Negative,1,1,1
+BITID,Female,60,5-64,Inpatient,Some,NA,NA,Negative,0,1,2
+BITID,Male,1,<5,Inpatient,Some,NA,NA,Negative,0,1,2
+BITID,Male,3,<5,Inpatient,Some,NA,NA,Negative,1,3,1
+BITID,Male,38,5-64,Inpatient,Some,NA,NA,Negative,1,0,1
+BITID,Female,1,<5,Inpatient,Some,NA,NA,Negative,1,2,1
+BITID,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,1,1
+BITID,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,1,0
+BITID,Female,29,5-64,Inpatient,Some,NA,NA,Negative,1,0,2
+BITID,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,1,2
+BITID,Male,31,5-64,Inpatient,Some,NA,NA,Negative,1,0,1
+BITID,Female,65,65+,Inpatient,Some,NA,NA,Negative,1,1,2
+BITID,Male,42,5-64,Inpatient,Some,NA,NA,Negative,1,1,1
+BITID,Female,1,<5,Inpatient,Some,NA,NA,Negative,1,1,2
+BITID,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,1,3
+BITID,Female,1,<5,Inpatient,Some,NA,NA,Negative,1,2,4
+BITID,Male,63,5-64,Inpatient,Some,NA,NA,Negative,1,0,3
+BITID,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,2,2
+BITID,Male,26,5-64,Inpatient,Some,NA,NA,Negative,1,3,2
+BITID,Male,2,<5,Inpatient,Some,NA,NA,Negative,1,1,2
+BITID,Female,1,<5,Inpatient,Some,NA,NA,Negative,1,1,3
+BITID,Female,5,5-64,Inpatient,Some,NA,NA,Negative,1,3,1
+BITID,Male,2,<5,Inpatient,Some,NA,NA,Negative,0,1,1
+BITID,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,1,0
+BITID,Female,1,<5,Inpatient,Some,NA,NA,Negative,1,4,3
+BITID,Male,36,5-64,Inpatient,Some,NA,NA,Negative,1,0,2
+BITID,Male,2,<5,Inpatient,Some,NA,NA,Negative,1,1,3
+BITID,Female,1,<5,Inpatient,Some,NA,NA,Negative,1,0,1
+BITID,Female,38,5-64,Inpatient,Some,NA,NA,Negative,1,2,2
+BITID,Female,10,5-64,Inpatient,Some,NA,NA,Negative,0,1,2
+BITID,Male,3,<5,Inpatient,Some,NA,NA,Negative,0,1,3
+BITID,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,1,3
+BITID,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,1,1
+BITID,Female,42,5-64,Inpatient,Some,NA,NA,Negative,1,0,1
+BITID,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,1,1
+BITID,Female,30,5-64,Inpatient,Some,NA,NA,Negative,0,1,2
+BITID,Male,50,5-64,Inpatient,Some,NA,NA,Negative,1,0,1
+BITID,Male,2,<5,Inpatient,Some,NA,NA,Negative,1,2,1
+BITID,Male,3,<5,Inpatient,Some,NA,NA,Negative,1,2,1
+BITID,Female,27,5-64,Inpatient,Some,NA,NA,Negative,0,0,2
+BITID,Male,42,5-64,Inpatient,Some,NA,NA,Negative,1,0,0
+BITID,Male,35,5-64,Inpatient,Some,NA,NA,Negative,1,2,3
+BITID,Female,1,<5,Inpatient,Some,NA,NA,Negative,1,3,0
+BITID,Male,4,<5,Inpatient,Some,NA,NA,Negative,0,2,2
+BITID,Male,32,5-64,Inpatient,Some,NA,NA,Negative,0,1,3
+BITID,Female,40,5-64,Inpatient,Some,NA,NA,Negative,1,1,2
+BITID,Male,2,<5,Inpatient,Some,NA,NA,Negative,1,2,2
+BITID,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,2,3
+BITID,Female,60,5-64,Inpatient,Some,NA,NA,Negative,1,1,1
+BITID,Female,1,<5,Inpatient,Some,NA,NA,Negative,1,2,1
+BITID,Female,1,<5,Inpatient,Some,NA,NA,Negative,1,1,2
+BITID,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,1,3
+BITID,Male,2,<5,Inpatient,Some,NA,NA,Negative,1,0,2
+BITID,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,3,3
+BITID,Female,2,<5,Inpatient,Some,NA,NA,Negative,0,0,2
+BITID,Male,1,<5,Inpatient,Some,NA,NA,Negative,0,1,3
+BITID,Male,32,5-64,Inpatient,Some,NA,NA,Negative,1,1,1
+BITID,Female,1,<5,Inpatient,Some,NA,NA,Negative,1,1,3
+BITID,Male,2,<5,Inpatient,Some,NA,NA,Negative,1,2,2
+BITID,Female,1,<5,Inpatient,Some,NA,NA,Negative,1,3,2
+BITID,Female,1,<5,Inpatient,Some,NA,NA,Negative,1,4,1
+BITID,Female,70,65+,Inpatient,Some,NA,NA,Negative,1,1,1
+BITID,Male,48,5-64,Inpatient,Some,NA,NA,Negative,1,0,1
+BITID,Female,1,<5,Inpatient,Some,NA,NA,Negative,0,1,2
+BITID,Male,1,<5,Inpatient,Some,NA,NA,Negative,0,0,6
+BITID,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,3,5
+BITID,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,1,3
+BITID,Female,1,<5,Inpatient,Some,NA,NA,Negative,1,2,2
+BITID,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,4,2
+BITID,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,1,3
+BITID,Female,2,<5,Inpatient,Some,NA,NA,Negative,1,1,2
+BITID,Male,3,<5,Inpatient,Some,NA,NA,Negative,1,1,2
+BITID,Female,1,<5,Inpatient,Some,NA,NA,Negative,1,6,3
+BITID,Male,25,5-64,Inpatient,Some,NA,NA,Negative,1,2,1
+BITID,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,1,2
+BITID,Female,1,<5,Inpatient,Some,NA,NA,Negative,1,3,2
+BITID,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,2,2
+BITID,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,2,2
+BITID,Female,40,5-64,Inpatient,Some,NA,NA,Negative,1,0,1
+BITID,Male,5,5-64,Inpatient,Some,NA,NA,Negative,1,2,1
+BITID,Female,55,5-64,Inpatient,Some,NA,NA,Negative,0,0,0
+BITID,Male,40,5-64,Inpatient,Some,NA,NA,Negative,1,1,1
+BITID,Male,50,5-64,Inpatient,Some,NA,NA,Negative,0,1,1
+BITID,Female,35,5-64,Inpatient,Some,NA,NA,Negative,1,1,2
+BITID,Male,4,<5,Inpatient,Some,NA,NA,Negative,1,3,2
+BITID,Female,1,<5,Inpatient,Some,NA,NA,Negative,1,1,1
+BITID,Male,1,<5,Inpatient,Some,NA,NA,Negative,0,2,3
+BITID,Female,1,<5,Inpatient,Some,NA,NA,Negative,0,1,4
+BITID,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,5,2
+BITID,Male,51,5-64,Inpatient,Some,NA,NA,Negative,1,1,2
+BITID,Female,29,5-64,Inpatient,Some,NA,NA,Negative,1,0,1
+BITID,Female,1,<5,Inpatient,Some,NA,NA,Negative,1,1,2
+BITID,Female,2,<5,Inpatient,Some,NA,NA,Negative,0,2,0
+BITID,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,1,1
+BITID,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,2,1
+BITID,Male,1,<5,Inpatient,Some,NA,NA,Negative,0,1,1
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,3,1
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,2,1
+Sitakunda Upazila Health Complex,Male,2,<5,Inpatient,Some,NA,NA,Negative,1,2,2
+Sitakunda Upazila Health Complex,Female,20,5-64,Inpatient,Some,NA,NA,Negative,1,2,1
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,3,2
+Sitakunda Upazila Health Complex,Female,5,5-64,Inpatient,Some,NA,NA,Negative,1,3,2
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,2,2
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,1,3
+Sitakunda Upazila Health Complex,Female,26,5-64,Inpatient,Some,NA,NA,Negative,1,1,1
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,2,1
+Sitakunda Upazila Health Complex,Female,2,<5,Inpatient,Some,NA,NA,Negative,1,5,2
+Sitakunda Upazila Health Complex,Male,27,5-64,Inpatient,Some,NA,NA,Negative,1,2,1
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,3,0
+Sitakunda Upazila Health Complex,Female,2,<5,Inpatient,Some,NA,NA,Negative,1,2,1
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,NA,Negative,1,3,1
+Sitakunda Upazila Health Complex,Female,35,5-64,Outpatient,Some,NA,NA,Negative,1,1,0
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,3,4
+Sitakunda Upazila Health Complex,Female,56,5-64,Inpatient,None,NA,NA,Negative,1,2,1
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,1,5
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,2,2
+Sitakunda Upazila Health Complex,Female,50,5-64,Inpatient,Some,NA,NA,Negative,1,1,2
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,1,1
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,NA,Negative,1,1,1
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,0,2,1
+Sitakunda Upazila Health Complex,Female,28,5-64,Inpatient,Severe,NA,NA,Negative,1,1,1
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,2,1
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,1,6
+Sitakunda Upazila Health Complex,Female,48,5-64,Inpatient,Some,NA,NA,Negative,1,2,1
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,2,1
+Sitakunda Upazila Health Complex,Female,48,5-64,Inpatient,Some,NA,NA,Negative,1,1,1
+Sitakunda Upazila Health Complex,Female,18,5-64,Inpatient,Some,NA,NA,Negative,1,1,0
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,3,2
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,None,NA,NA,Negative,1,1,1
+Sitakunda Upazila Health Complex,Female,17,5-64,Inpatient,Some,NA,NA,Negative,1,1,1
+Sitakunda Upazila Health Complex,Female,2,<5,Inpatient,Some,NA,NA,Negative,1,1,2
+Sitakunda Upazila Health Complex,Male,2,<5,Inpatient,Some,NA,NA,Negative,0,2,2
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,4,1
+Sitakunda Upazila Health Complex,Female,4,<5,Inpatient,Some,NA,NA,Negative,1,2,1
+Sitakunda Upazila Health Complex,Male,33,5-64,Inpatient,Some,NA,NA,Negative,1,1,1
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,NA,Negative,1,4,1
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,1,2
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,2,3
+Sitakunda Upazila Health Complex,Female,50,5-64,Inpatient,Some,NA,NA,Negative,1,2,3
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,1,5
+Sitakunda Upazila Health Complex,Male,2,<5,Inpatient,Some,NA,NA,Negative,1,1,2
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,NA,Negative,1,2,1
+Sitakunda Upazila Health Complex,Male,37,5-64,Inpatient,Some,NA,NA,Negative,1,1,2
+Sitakunda Upazila Health Complex,Male,25,5-64,Inpatient,Some,NA,NA,Negative,1,0,1
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,4,2
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,1,0
+Sitakunda Upazila Health Complex,Male,2,<5,Inpatient,Some,NA,NA,Negative,1,0,2
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,2,4
+Sitakunda Upazila Health Complex,Male,2,<5,Inpatient,Some,NA,NA,Negative,1,3,1
+Sitakunda Upazila Health Complex,Female,60,5-64,Inpatient,Some,NA,NA,Negative,1,2,3
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,NA,Negative,1,1,1
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,NA,Negative,1,2,3
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,NA,Negative,1,3,2
+Sitakunda Upazila Health Complex,Female,8,5-64,Inpatient,Some,NA,NA,Negative,1,1,2
+Sitakunda Upazila Health Complex,Female,4,<5,Inpatient,Some,NA,NA,Negative,1,3,1
+BITID,Male,47,5-64,Inpatient,Some,NA,NA,Negative,1,0,0
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,NA,Negative,1,1,1
+Sitakunda Upazila Health Complex,Female,23,5-64,Inpatient,Some,NA,NA,Negative,1,1,0
+Sitakunda Upazila Health Complex,Female,5,5-64,Inpatient,Some,NA,NA,Negative,1,1,62
+Sitakunda Upazila Health Complex,Male,4,<5,Inpatient,Some,NA,NA,Negative,0,1,0
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,5,1
+Sitakunda Upazila Health Complex,Male,5,5-64,Inpatient,Some,NA,NA,Negative,1,1,2
+Sitakunda Upazila Health Complex,Female,55,5-64,Inpatient,Some,NA,NA,Negative,0,1,1
+Sitakunda Upazila Health Complex,Male,2,<5,Inpatient,Severe,NA,NA,Negative,0,0,2
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,2,1
+Sitakunda Upazila Health Complex,Female,27,5-64,Outpatient,Some,NA,NA,Negative,0,0,2
+Sitakunda Upazila Health Complex,Male,2,<5,Inpatient,Some,NA,NA,Negative,1,1,2
+Sitakunda Upazila Health Complex,Male,40,5-64,Inpatient,Some,NA,NA,Negative,1,2,2
+Sitakunda Upazila Health Complex,Male,25,5-64,Inpatient,Some,NA,NA,Negative,1,0,2
+Sitakunda Upazila Health Complex,Male,6,5-64,Inpatient,Some,NA,NA,Negative,1,1,2
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,2,3
+Sitakunda Upazila Health Complex,Male,2,<5,Inpatient,Some,NA,NA,Negative,1,1,1
+Sitakunda Upazila Health Complex,Female,2,<5,Inpatient,Some,NA,NA,Negative,1,2,1
+Sitakunda Upazila Health Complex,Male,80,65+,Inpatient,Some,NA,NA,Negative,1,1,2
+Sitakunda Upazila Health Complex,Female,2,<5,Inpatient,Some,NA,NA,Negative,1,1,2
+Sitakunda Upazila Health Complex,Female,14,5-64,Inpatient,Some,NA,NA,Negative,1,2,1
+Sitakunda Upazila Health Complex,Male,49,5-64,Inpatient,Some,NA,NA,Negative,1,0,1
+Sitakunda Upazila Health Complex,Male,37,5-64,Inpatient,Some,NA,NA,Negative,1,2,2
+Sitakunda Upazila Health Complex,Male,4,<5,Inpatient,Some,NA,NA,Negative,1,4,1
+Sitakunda Upazila Health Complex,Male,2,<5,Inpatient,Some,NA,NA,Negative,1,1,2
+Sitakunda Upazila Health Complex,Female,50,5-64,Inpatient,Some,NA,NA,Negative,0,2,3
+Sitakunda Upazila Health Complex,Male,3,<5,Inpatient,Some,NA,NA,Negative,1,1,3
+Sitakunda Upazila Health Complex,Female,25,5-64,Inpatient,Some,NA,NA,Negative,1,2,2
+Sitakunda Upazila Health Complex,Female,25,5-64,Inpatient,Severe,NA,NA,Negative,1,4,1
+Sitakunda Upazila Health Complex,Male,30,5-64,Inpatient,Some,NA,NA,Negative,1,2,3
+Sitakunda Upazila Health Complex,Male,26,5-64,Inpatient,Some,NA,NA,Negative,1,1,2
+Sitakunda Upazila Health Complex,Female,48,5-64,Inpatient,Some,NA,NA,Negative,1,2,1
+Sitakunda Upazila Health Complex,Female,25,5-64,Inpatient,Some,NA,NA,Negative,1,3,2
+Sitakunda Upazila Health Complex,Male,29,5-64,Inpatient,Some,NA,NA,Negative,1,3,4
+Sitakunda Upazila Health Complex,Male,18,5-64,Inpatient,Some,NA,NA,Negative,1,2,1
+Sitakunda Upazila Health Complex,Female,42,5-64,Inpatient,Some,NA,NA,Negative,0,0,0
+Sitakunda Upazila Health Complex,Female,26,5-64,Inpatient,Some,NA,NA,Negative,1,3,1
+Sitakunda Upazila Health Complex,Male,45,5-64,Inpatient,Some,NA,NA,Negative,1,2,1
+Sitakunda Upazila Health Complex,Female,26,5-64,Inpatient,Some,NA,NA,Negative,1,2,-1
+Sitakunda Upazila Health Complex,Female,30,5-64,Inpatient,Some,NA,NA,Negative,1,1,0
+Sitakunda Upazila Health Complex,Female,27,5-64,Inpatient,Some,NA,NA,Negative,1,2,1
+Sitakunda Upazila Health Complex,Male,21,5-64,Inpatient,Some,NA,NA,Negative,1,1,8
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,2,3
+Sitakunda Upazila Health Complex,Female,36,5-64,Inpatient,Some,NA,NA,Negative,1,3,0
+Sitakunda Upazila Health Complex,Male,55,5-64,Inpatient,Severe,NA,NA,Negative,1,2,0
+Sitakunda Upazila Health Complex,Female,45,5-64,Inpatient,Some,NA,NA,Negative,0,1,2
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,1,1
+Sitakunda Upazila Health Complex,Female,5,5-64,Inpatient,Some,NA,NA,Negative,1,1,0
+Sitakunda Upazila Health Complex,Male,38,5-64,Inpatient,Some,NA,NA,Negative,1,1,1
+Sitakunda Upazila Health Complex,Female,26,5-64,Inpatient,Some,NA,NA,Negative,1,1,4
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,NA,Negative,1,2,1
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,1,2
+Sitakunda Upazila Health Complex,Male,13,5-64,Inpatient,Some,NA,NA,Negative,1,1,1
+Sitakunda Upazila Health Complex,Male,55,5-64,Inpatient,Some,NA,NA,Negative,1,2,0
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,4,4
+Sitakunda Upazila Health Complex,Female,3,<5,Inpatient,Some,NA,NA,Negative,1,2,1
+Sitakunda Upazila Health Complex,Female,42,5-64,Inpatient,Some,NA,NA,Negative,1,1,1
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,1,32
+Sitakunda Upazila Health Complex,Female,2,<5,Inpatient,Some,NA,NA,Negative,1,2,1
+Sitakunda Upazila Health Complex,Female,25,5-64,Inpatient,Some,NA,NA,Negative,1,1,2
+Sitakunda Upazila Health Complex,Female,37,5-64,Inpatient,Some,NA,NA,Negative,1,1,1
+Sitakunda Upazila Health Complex,Male,27,5-64,Inpatient,Some,NA,NA,Negative,1,1,2
+Sitakunda Upazila Health Complex,Female,90,65+,Inpatient,Some,NA,NA,Negative,1,1,1
+Sitakunda Upazila Health Complex,Female,48,5-64,Inpatient,Some,NA,NA,Negative,1,2,0
+Sitakunda Upazila Health Complex,Female,50,5-64,Inpatient,Some,NA,NA,Negative,1,2,1
+Sitakunda Upazila Health Complex,Male,36,5-64,Inpatient,Some,NA,NA,Negative,1,1,1
+Sitakunda Upazila Health Complex,Female,35,5-64,Outpatient,Some,NA,NA,Negative,1,1,0
+Sitakunda Upazila Health Complex,Male,50,5-64,Inpatient,Some,NA,NA,Negative,1,1,1
+Sitakunda Upazila Health Complex,Female,21,5-64,Inpatient,Some,NA,NA,Negative,1,2,1
+Sitakunda Upazila Health Complex,Female,30,5-64,Inpatient,Some,NA,NA,Negative,1,1,2
+Sitakunda Upazila Health Complex,Female,45,5-64,Inpatient,Some,NA,NA,Negative,1,1,1
+Sitakunda Upazila Health Complex,Female,45,5-64,Inpatient,Some,NA,NA,Negative,0,1,1
+Sitakunda Upazila Health Complex,Female,50,5-64,Inpatient,Some,NA,NA,Negative,1,2,4
+Sitakunda Upazila Health Complex,Female,27,5-64,Inpatient,Some,NA,NA,Negative,1,2,2
+Sitakunda Upazila Health Complex,Male,33,5-64,Inpatient,Some,NA,NA,Negative,1,1,1
+Sitakunda Upazila Health Complex,Female,25,5-64,Inpatient,Some,NA,NA,Negative,1,1,0
+Sitakunda Upazila Health Complex,Male,25,5-64,Inpatient,Some,NA,NA,Negative,0,1,2
+Sitakunda Upazila Health Complex,Male,5,5-64,Inpatient,Some,NA,NA,Negative,1,2,1
+Sitakunda Upazila Health Complex,Female,42,5-64,Inpatient,Some,NA,NA,Negative,0,0,1
+Sitakunda Upazila Health Complex,Female,70,65+,Inpatient,Some,NA,NA,Negative,1,1,1
+Sitakunda Upazila Health Complex,Female,27,5-64,Inpatient,Some,NA,NA,Negative,1,1,2
+Sitakunda Upazila Health Complex,Male,60,5-64,Inpatient,Some,NA,NA,Negative,1,3,1
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,1,1
+Sitakunda Upazila Health Complex,Male,23,5-64,Inpatient,Some,NA,NA,Negative,1,1,1
+Sitakunda Upazila Health Complex,Female,20,5-64,Inpatient,Some,NA,NA,Negative,1,2,1
+Sitakunda Upazila Health Complex,Female,19,5-64,Inpatient,Some,NA,NA,Negative,1,2,1
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,1,1
+Sitakunda Upazila Health Complex,Female,50,5-64,Inpatient,Some,NA,NA,Negative,1,2,1
+Sitakunda Upazila Health Complex,Female,43,5-64,Inpatient,Some,NA,NA,Negative,1,1,1
+Sitakunda Upazila Health Complex,Female,11,5-64,Inpatient,Some,NA,NA,Negative,1,1,1
+Sitakunda Upazila Health Complex,Male,41,5-64,Inpatient,Some,NA,NA,Negative,1,2,1
+Sitakunda Upazila Health Complex,Female,42,5-64,Inpatient,Some,NA,NA,Negative,1,1,2
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,NA,Negative,1,2,0
+Sitakunda Upazila Health Complex,Female,48,5-64,Inpatient,Some,NA,NA,Negative,1,1,2
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,1,1
+Sitakunda Upazila Health Complex,Female,25,5-64,Inpatient,Some,NA,NA,Negative,1,1,2
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,2,2
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,2,1
+Sitakunda Upazila Health Complex,Male,2,<5,Inpatient,Some,NA,NA,Negative,1,2,2
+Sitakunda Upazila Health Complex,Female,60,5-64,Inpatient,Some,NA,NA,Negative,1,1,2
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,1,1
+Sitakunda Upazila Health Complex,Female,2,<5,Inpatient,Some,NA,NA,Negative,1,2,2
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,1,1
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,NA,Negative,1,2,1
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,1,1
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,1,1
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,2,3
+Sitakunda Upazila Health Complex,Female,40,5-64,Inpatient,Some,NA,NA,Negative,1,1,2
+Sitakunda Upazila Health Complex,Male,40,5-64,Inpatient,Some,NA,NA,Negative,1,1,1
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,NA,Negative,1,1,2
+Sitakunda Upazila Health Complex,Male,6,5-64,Inpatient,Some,NA,NA,Negative,1,2,3
+Sitakunda Upazila Health Complex,Female,25,5-64,Inpatient,Some,NA,NA,Negative,1,1,0
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,1,2
+Sitakunda Upazila Health Complex,Male,55,5-64,Inpatient,Some,NA,NA,Negative,1,2,1
+Sitakunda Upazila Health Complex,Female,60,5-64,Inpatient,Some,NA,NA,Negative,1,3,3
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,NA,Negative,1,2,1
+Sitakunda Upazila Health Complex,Male,32,5-64,Inpatient,Some,NA,NA,Negative,1,1,2
+Sitakunda Upazila Health Complex,Female,2,<5,Inpatient,Some,NA,NA,Negative,1,2,2
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,NA,Negative,1,2,1
+Sitakunda Upazila Health Complex,Female,2,<5,Inpatient,Some,NA,NA,Negative,1,1,0
+Sitakunda Upazila Health Complex,Female,30,5-64,Inpatient,Some,NA,NA,Negative,1,1,2
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,2,3
+Sitakunda Upazila Health Complex,Female,70,65+,Inpatient,Some,NA,NA,Negative,1,1,2
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,2,1
+Sitakunda Upazila Health Complex,Male,4,<5,Inpatient,Some,NA,NA,Negative,1,1,1
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,NA,Negative,1,1,2
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,1,2
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,NA,Negative,1,1,2
+Sitakunda Upazila Health Complex,Male,48,5-64,Inpatient,Some,NA,NA,Negative,0,1,1
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,1,2
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,NA,Negative,1,3,1
+Sitakunda Upazila Health Complex,Male,26,5-64,Inpatient,Some,NA,NA,Negative,1,2,1
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,NA,Negative,1,2,3
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,1,2
+Sitakunda Upazila Health Complex,Female,2,<5,Inpatient,Some,NA,NA,Negative,1,2,1
+Sitakunda Upazila Health Complex,Female,58,5-64,Inpatient,Some,NA,NA,Negative,1,2,1
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,1,2
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,1,1
+Sitakunda Upazila Health Complex,Female,22,5-64,Inpatient,Some,NA,NA,Negative,1,2,1
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,2,3
+Sitakunda Upazila Health Complex,Female,50,5-64,Inpatient,Some,NA,NA,Negative,1,2,3
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,NA,Negative,1,2,2
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,NA,Negative,1,3,2
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,1,1
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,NA,Negative,1,2,1
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,1,3
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,1,2
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,1,3
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,1,2
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,1,2
+Sitakunda Upazila Health Complex,Female,3,<5,Inpatient,Some,NA,NA,Negative,1,2,2
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,1,2
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,1,3
+Sitakunda Upazila Health Complex,Male,40,5-64,Inpatient,Some,NA,NA,Negative,1,1,2
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,1,4
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,NA,Negative,1,1,4
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,1,4
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,NA,Negative,1,1,4
+Sitakunda Upazila Health Complex,Female,2,<5,Inpatient,Some,NA,NA,Negative,1,2,5
+Sitakunda Upazila Health Complex,Female,4,<5,Inpatient,Some,NA,NA,Negative,1,2,2
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,1,2
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,0,0
+Sitakunda Upazila Health Complex,Female,20,5-64,Inpatient,Some,NA,NA,Negative,1,0,2
+Sitakunda Upazila Health Complex,Female,2,<5,Inpatient,Some,NA,NA,Negative,1,1,2
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,NA,Negative,1,2,2
+Sitakunda Upazila Health Complex,Male,1,<5,Inpatient,Some,NA,NA,Negative,1,1,2
+Sitakunda Upazila Health Complex,Male,2,<5,Inpatient,Severe,NA,NA,Negative,1,2,3
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,NA,Negative,0,1,3
+Sitakunda Upazila Health Complex,Female,1,<5,Inpatient,Some,NA,NA,Negative,1,2,2

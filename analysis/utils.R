@@ -155,7 +155,7 @@ getTminRDT <- function() {
 }
 
 getTmaxRDT <- function() {
-  as.Date("2022-08-28")
+  as.Date("2023-02-20")
 }
 getStanDraws <- function(opt) {
   dir(here("generated_data"), 
